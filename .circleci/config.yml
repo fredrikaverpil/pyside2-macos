@@ -1,0 +1,11 @@
+version: 2
+
+machine:
+  xcode:
+    version: 7.0
+
+jobs:
+  build:
+    steps:
+      - checkout
+      - run: echo "hello"
