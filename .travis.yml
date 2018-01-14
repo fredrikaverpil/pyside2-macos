@@ -14,9 +14,8 @@ matrix:
 
 before_install:
   - curl -L -O https://download.qt.io/archive/qt/5.9/5.9.3/qt-opensource-mac-x64-5.9.3.dmg
-  - git clone https://github.com/benlau/qtci.git
   - hdiutil attach qt-opensource-mac-x64-5.9.3.dmg
-  - /Volumes/qt-opensource-mac-x64-5.9.3/qt-opensource-mac-x64-5.9.3.app/Contents/MacOS/qt-opensource-mac-x64-5.9.3 --silent
+  - /Volumes/qt-opensource-mac-x64-5.9.3/qt-opensource-mac-x64-5.9.3.app/Contents/MacOS/qt-opensource-mac-x64-5.9.3 --script qs-installer-noninteractive.qs
 
 
 # before_script:
