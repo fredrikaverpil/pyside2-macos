@@ -15,7 +15,8 @@ matrix:
 before_install:
   - curl -L -O https://download.qt.io/archive/qt/5.9/5.9.3/qt-opensource-mac-x64-5.9.3.dmg
   - hdiutil attach qt-opensource-mac-x64-5.9.3.dmg
-  - /Volumes/qt-opensource-mac-x64-5.9.3/qt-opensource-mac-x64-5.9.3.app/Contents/MacOS/qt-opensource-mac-x64-5.9.3 --script qs-installer-noninteractive.qs
+  # Install script from: https://stackoverflow.com/questions/25105269/silent-install-qt-run-installer-on-ubuntu-server
+  - /Volumes/qt-opensource-mac-x64-5.9.3/qt-opensource-mac-x64-5.9.3.app/Contents/MacOS/qt-opensource-mac-x64-5.9.3 --script qs-installer-noninteractive.qs --verbose
 
 
 # before_script:
