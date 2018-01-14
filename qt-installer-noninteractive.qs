@@ -1,4 +1,4 @@
-// Emacs mode hint: -*- mode: JavaScript -*-
+// https://stackoverflow.com/a/34032216/78204
 
 function Controller() {
     installer.autoRejectMessageBoxes();
