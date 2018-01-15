@@ -12,6 +12,7 @@ before_install:
   - curl -L -O https://download.qt.io/archive/qt/5.9/5.9.3/qt-opensource-mac-x64-5.9.3.dmg
   - hdiutil attach -noverify qt-opensource-mac-x64-5.9.3.dmg
   - /Volumes/qt-opensource-mac-x64-5.9.3/qt-opensource-mac-x64-5.9.3.app/Contents/MacOS/qt-opensource-mac-x64-5.9.3  --verbose --script qt-installer-noninteractive.qs
+  - ls -alh ~/Qt/bin/
   
   # Python 3.5
   - brew install https://raw.githubusercontent.com/Homebrew/homebrew-core/ec545d45d4512ace3570782283df4ecda6bb0044/Formula/python3.rb
@@ -21,18 +22,18 @@ before_install:
 
   # OpenSSL already provided by Travis CI
   # - brew install openssl
+  # https://github.com/travis-ci/travis-ci/issues/6698#issuecomment-252540860
+  # - 'if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then export CFLAGS="-I/usr/local/opt/openssl/include $CFLAGS" LDFLAGS="-L/usr/local/opt/openssl/lib $LDFLAGS"; fi'
 
   # CMake 3.0 already provided by Travis CI
   # - brew install cmake
 
 before_script:
-  - git clone --recursive --branch 5.9 https://codereview.qt-project.org/pyside/pyside-setup ~/pyside-setup
-
-
-# after_script:
+  - git clone --recursive --branch 5.9 https://qt/pyside/pyside-setup ~/pyside-setup
 
 script:
-  - python3 ~/pyside-setup/setup.py bdist_wheel --ignore-git --standalone --qmake=/usr/local/Cellar/qt5/5.6.1-1/bin/qmake --cmake=/usr/local/bin/cmake --openssl=/usr/local/Cellar/openssl/1.0.2h_1/bin --jobs=3
+  # Note, redacted --openssl=/usr/local/Cellar/openssl/1.0.2h_1/bin
+  - python3 ~/pyside-setup/setup.py bdist_wheel --ignore-git --standalone --no-examples --qmake=~/Qt/bin/qmake --cmake=/usr/local/bin/cmake --jobs=3
 
 
 # after_success:
