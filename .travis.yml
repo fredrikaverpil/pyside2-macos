@@ -29,7 +29,7 @@ before_install:
   # - brew install cmake
 
 before_script:
-  - git clone --recursive --branch 5.9 https://qt/pyside/pyside-setup ~/pyside-setup
+  - git clone --recursive --branch 5.9 https://code.qt.io/pyside/pyside-setup.git ~/pyside-setup
 
 script:
   # Note, redacted --openssl=/usr/local/Cellar/openssl/1.0.2h_1/bin
