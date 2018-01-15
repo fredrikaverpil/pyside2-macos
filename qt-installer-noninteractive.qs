@@ -32,6 +32,8 @@ Controller.prototype.ComponentSelectionPageCallback = function() {
     widget.selectComponent("qt.593")
     widget.selectComponent("qt.tools")
     widget.selectComponent("qt.tools.qtcreator")
+    widget.selectComponent("qt.593.clang_64")
+
 
     // widget.deselectAll();
 
