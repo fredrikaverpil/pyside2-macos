@@ -12,7 +12,7 @@ before_install:
   - curl -L -O https://download.qt.io/archive/qt/5.9/5.9.3/qt-opensource-mac-x64-5.9.3.dmg
   - hdiutil attach -noverify qt-opensource-mac-x64-5.9.3.dmg
   - /Volumes/qt-opensource-mac-x64-5.9.3/qt-opensource-mac-x64-5.9.3.app/Contents/MacOS/qt-opensource-mac-x64-5.9.3  --verbose --script qt-installer-noninteractive.qs
-  - ls -alh ~/Qt/bin/
+  - ls -alh ~/Qt
   
   # Python 3.5
   - brew install https://raw.githubusercontent.com/Homebrew/homebrew-core/ec545d45d4512ace3570782283df4ecda6bb0044/Formula/python3.rb
