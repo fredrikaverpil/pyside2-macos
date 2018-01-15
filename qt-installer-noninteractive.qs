@@ -28,7 +28,13 @@ Controller.prototype.TargetDirectoryPageCallback = function()
 Controller.prototype.ComponentSelectionPageCallback = function() {
     var widget = gui.currentPageWidget();
 
+    widget.selectComponent("qt")
+    widget.selectComponent("qt.593")
+    widget.selectComponent("qt.tools")
+    widget.selectComponent("qt.tools.qtcreator")
+
     // widget.deselectAll();
+
     // widget.selectComponent("qt.55.gcc_64");
     // widget.selectComponent("qt.55.qtquickcontrols");
 
