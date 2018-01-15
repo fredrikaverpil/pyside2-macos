@@ -6,21 +6,35 @@ matrix:
   - os: osx
     osx_image: xcode8.3
     language: generic
-    env:
-    - RVM_CERT_FIX=1
-    - QT_VER=5.6
-    - PY_VER=3.5
-
 
 before_install:
+  # Qt 5.9
   - curl -L -O https://download.qt.io/archive/qt/5.9/5.9.3/qt-opensource-mac-x64-5.9.3.dmg
   - hdiutil attach -noverify qt-opensource-mac-x64-5.9.3.dmg
   - /Volumes/qt-opensource-mac-x64-5.9.3/qt-opensource-mac-x64-5.9.3.app/Contents/MacOS/qt-opensource-mac-x64-5.9.3  --verbose --script qt-installer-noninteractive.qs
+  
+  # Python 3.5
+  - brew install https://raw.githubusercontent.com/Homebrew/homebrew-core/ec545d45d4512ace3570782283df4ecda6bb0044/Formula/python3.rb
+
+  # lxml
+  - brew install libxslt libxml2
+
+  # OpenSSL already provided by Travis CI
+  # - brew install openssl
+
+  # CMake 3.0 already provided by Travis CI
+  # - brew install cmake
+
+before_script:
+  - git clone --recursive --branch 5.9 https://codereview.qt-project.org/pyside/pyside-setup ~/pyside-setup
 
 
-# before_script:
 # after_script:
-# script:
+
+script:
+  - python3 ~/pyside-setup/setup.py bdist_wheel --ignore-git --standalone --qmake=/usr/local/Cellar/qt5/5.6.1-1/bin/qmake --cmake=/usr/local/bin/cmake --openssl=/usr/local/Cellar/openssl/1.0.2h_1/bin --jobs=3
+
+
 # after_success:
 # after_failure:
 # before_deploy:
