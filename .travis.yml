@@ -1,10 +1,26 @@
 matrix:
   include:
 
-  # OS X 10.10, Xcode 8.3, Qt 5.6, Python 3.5
+
   - os: osx
     osx_image: xcode8.3
     language: generic
+    env:
+    - QT_BRANCH=5.6
+    - QT_VER=5.6.3
+    - QT_INSTALLER_FILE=qt-opensource-mac-x64-clang-5.6.3
+
+  - os: osx
+    osx_image: xcode8.3
+    language: generic
+    env:
+    - QT_BRANCH=5.9
+    - QT_VER=5.9.3
+    - QT_INSTALLER_FILE=qt-opensource-mac-x64-5.9.3
+    - LIBCLANG_FILE=libclang-release_39-mac.7z
+
+
+
 
 before_install:
   # Python 3.5
@@ -17,15 +33,15 @@ before_install:
   - brew install p7zip
 
   # Qt 5.9
-  - curl -L -O https://download.qt.io/archive/qt/5.9/5.9.3/qt-opensource-mac-x64-5.9.3.dmg
-  - hdiutil attach -noverify qt-opensource-mac-x64-5.9.3.dmg
-  - travis_wait 30 /Volumes/qt-opensource-mac-x64-5.9.3/qt-opensource-mac-x64-5.9.3.app/Contents/MacOS/qt-opensource-mac-x64-5.9.3 --script qt-installer-noninteractive.qs --verbose -platform minimal
+  - curl -L -O https://download.qt.io/archive/qt/${QT_BRANCH}/${QT_VER}/${QT_INSTALLER_FILE}.dmg
+  - hdiutil attach -noverify ${QT_INSTALLER_FILE}.dmg
+  - travis_wait 30 /Volumes/${QT_INSTALLER_FILE}/${QT_INSTALLER_FILE}.app/Contents/MacOS/${QT_INSTALLER_FILE} --script qt-installer-${QT_VER}-noninteractive.qs --verbose -platform minimal
   - ls -alh ~/Qt
 
   # libclang
-  - curl -L -O http://download.qt.io/development_releases/prebuilt/libclang/libclang-release_39-mac.7z
-  - 7z x libclang-release_39-mac.7z
-  - export LLVM_INSTALL_DIR=$(pwd)/libclang
+  - if [ "$QT_BRANCH" == "5.9" ]; then curl -L -O http://download.qt.io/development_releases/prebuilt/libclang/${LIBCLANG_FILE} ;
+  - if [ "$QT_BRANCH" == "5.9" ]; then 7z x ${LIBCLANG_FILE} ;
+  - if [ "$QT_BRANCH" == "5.9" ]; then export LLVM_INSTALL_DIR=$(pwd)/libclang ;
 
   # OpenSSL already provided by Travis CI
   # - brew install openssl
@@ -42,11 +58,11 @@ before_script:
   # Fix "clang: warning: libstdc++ is deprecated; move to libc++ with a minimum deployment target of OS X 10.9 [-Wdeprecated]"
   # - export CLANG_CXX_LIBRARY="libc++"
 
-  - git clone --recursive --branch 5.9 https://code.qt.io/pyside/pyside-setup.git ~/pyside-setup
+  - git clone --recursive --branch ${QT_BRANCH} https://code.qt.io/pyside/pyside-setup.git ~/pyside-setup
 
 script:
   # Note, redacted --openssl=/usr/local/Cellar/openssl/1.0.2h_1/bin
-  - python3 ~/pyside-setup/setup.py bdist_wheel --ignore-git --standalone --no-examples --qmake=$HOME/Qt/5.9.3/clang_64/bin/qmake --cmake=/usr/local/bin/cmake --jobs=3
+  - python3 ~/pyside-setup/setup.py bdist_wheel --ignore-git --standalone --no-examples --qmake=$HOME/Qt/${QT_VER}/clang_64/bin/qmake --cmake=/usr/local/bin/cmake --jobs=3
 
 
 # after_success:
