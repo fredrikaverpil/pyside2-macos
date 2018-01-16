@@ -33,7 +33,6 @@ before_install:
   - curl -L -O https://download.qt.io/archive/qt/${QT_BRANCH}/${QT_VER}/${QT_INSTALLER_FILE}.dmg
   - hdiutil attach -noverify ${QT_INSTALLER_FILE}.dmg
   - travis_wait 30 /Volumes/${QT_INSTALLER_FILE}/${QT_INSTALLER_FILE}.app/Contents/MacOS/${QT_INSTALLER_FILE} --script qt-installer-${QT_VER}-noninteractive.qs --verbose -platform minimal
-  - ls -alh ~/Qt
 
   # libclang
   - if [ "$QT_BRANCH" == "5.9" ]; then curl -L -O http://download.qt.io/development_releases/prebuilt/libclang/${LIBCLANG_FILE} ;
@@ -47,7 +46,11 @@ before_install:
 
   # CMake 3.0 already provided by Travis CI
   # - brew install cmake
+
+  # Summary
+  - python3 --version
   - cmake --version
+  - git --version
 
 
 before_script:
