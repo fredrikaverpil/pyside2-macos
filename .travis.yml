@@ -51,6 +51,7 @@ before_install:
   - python3 --version
   - cmake --version
   - git --version
+  - clang --version
 
 
 before_script:
