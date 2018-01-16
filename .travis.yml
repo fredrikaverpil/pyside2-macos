@@ -32,7 +32,7 @@ before_install:
   # 7zip
   - brew install p7zip
 
-  # Qt 5.9
+  # Qt
   - curl -L -O https://download.qt.io/archive/qt/${QT_BRANCH}/${QT_VER}/${QT_INSTALLER_FILE}.dmg
   - hdiutil attach -noverify ${QT_INSTALLER_FILE}.dmg
   - travis_wait 30 /Volumes/${QT_INSTALLER_FILE}/${QT_INSTALLER_FILE}.app/Contents/MacOS/${QT_INSTALLER_FILE} --script qt-installer-${QT_VER}-noninteractive.qs --verbose -platform minimal
