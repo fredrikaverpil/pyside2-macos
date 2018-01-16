@@ -36,6 +36,12 @@ before_install:
   # - brew install cmake
 
 before_script:
+  # Fix "fatal error: 'type_traits' file not found"
+  # - export CPLUS_INCLUDE_PATH="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1/"
+
+  # Fix "clang: warning: libstdc++ is deprecated; move to libc++ with a minimum deployment target of OS X 10.9 [-Wdeprecated]"
+  # - export CLANG_CXX_LIBRARY="libc++"
+
   - git clone --recursive --branch 5.9 https://code.qt.io/pyside/pyside-setup.git ~/pyside-setup
 
 script:
