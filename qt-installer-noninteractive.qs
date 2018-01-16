@@ -28,11 +28,27 @@ Controller.prototype.TargetDirectoryPageCallback = function()
 Controller.prototype.ComponentSelectionPageCallback = function() {
     var widget = gui.currentPageWidget();
 
-    widget.selectComponent("qt")
-    widget.selectComponent("qt.593")
-    widget.selectComponent("qt.tools")
-    widget.selectComponent("qt.tools.qtcreator")
+    widget.deselectAll();
+
     widget.selectComponent("qt.593.clang_64")
+
+    widget.selectComponent("qt.tools.qtcreator")
+    widget.deselectComponent("qt.tools.doc");
+    widget.deselectComponent("qt.tools.examples");
+
+    widget.selectComponent("qt.593.qt3d")
+    widget.selectComponent("qt.593.qtcanvas3d")
+    widget.selectComponent("qt.593.qtlocation")
+    widget.selectComponent("qt.593.qtquick1")
+    widget.selectComponent("qt.593.qtscript")
+    widget.selectComponent("qt.593.qtwebengine")
+    widget.selectComponent("qt.extras")
+
+
+    // widget.selectComponent("qt")
+    // widget.selectComponent("qt.593")
+    // widget.selectComponent("qt.tools")
+
 
 
     // widget.deselectAll();
