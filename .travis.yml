@@ -47,6 +47,7 @@ before_install:
 
   # CMake 3.0 already provided by Travis CI
   # - brew install cmake
+  - cmake --version
 
 
 before_script:
