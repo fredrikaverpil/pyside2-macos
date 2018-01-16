@@ -1,7 +1,6 @@
 matrix:
   include:
 
-
   - os: osx
     osx_image: xcode8.3
     language: generic
@@ -18,8 +17,6 @@ matrix:
     - QT_VER=5.9.3
     - QT_INSTALLER_FILE=qt-opensource-mac-x64-5.9.3
     - LIBCLANG_FILE=libclang-release_39-mac.7z
-
-
 
 
 before_install:
@@ -51,6 +48,7 @@ before_install:
   # CMake 3.0 already provided by Travis CI
   # - brew install cmake
 
+
 before_script:
   # Fix "fatal error: 'type_traits' file not found"
   # - export CPLUS_INCLUDE_PATH="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1/"
@@ -59,6 +57,7 @@ before_script:
   # - export CLANG_CXX_LIBRARY="libc++"
 
   - git clone --recursive --branch ${QT_BRANCH} https://code.qt.io/pyside/pyside-setup.git ~/pyside-setup
+
 
 script:
   # Note, redacted --openssl=/usr/local/Cellar/openssl/1.0.2h_1/bin
