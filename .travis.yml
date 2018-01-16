@@ -13,7 +13,7 @@ before_install:
   - hdiutil attach -noverify qt-opensource-mac-x64-5.9.3.dmg
   - travis_wait 30 /Volumes/qt-opensource-mac-x64-5.9.3/qt-opensource-mac-x64-5.9.3.app/Contents/MacOS/qt-opensource-mac-x64-5.9.3 --script qt-installer-noninteractive.qs
   - ls -alh ~/Qt
-  
+
   # Python 3.5
   - brew install https://raw.githubusercontent.com/Homebrew/homebrew-core/ec545d45d4512ace3570782283df4ecda6bb0044/Formula/python3.rb
 
@@ -33,7 +33,7 @@ before_script:
 
 script:
   # Note, redacted --openssl=/usr/local/Cellar/openssl/1.0.2h_1/bin
-  - python3 ~/pyside-setup/setup.py bdist_wheel --ignore-git --standalone --no-examples --qmake=~/Qt/bin/qmake --cmake=/usr/local/bin/cmake --jobs=3
+  - python3 ~/pyside-setup/setup.py bdist_wheel --ignore-git --standalone --no-examples --qmake=~/Qt/5.9.3/clang_64/bin/qmake --cmake=/usr/local/bin/cmake --jobs=3
 
 
 # after_success:
