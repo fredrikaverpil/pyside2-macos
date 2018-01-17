@@ -1,6 +1,35 @@
 # pyside2-macos
 
-## Notes
+[![Build Status](https://travis-ci.org/fredrikaverpil/pyside2-macos.svg?branch=master)](https://travis-ci.org/fredrikaverpil/pyside2-macos)
+
+:warning: This is a (possibly temporary?) development/research repository for building standalone PySide2 wheels on Windows.
+
+<br><br>
+
+
+## Download the standalone wheels
+
+TBD
+
+<br><br>
+
+
+## Known issues
+
+### Build issues
+
+TBD
+
+### Upstream issues
+
+All upstream issues should be reported in the [official PySide issue tracker](https://bugreports.qt.io/projects/PYSIDE/issues).
+
+Note: PRs attempting to fix upstream fixes will not be accepted. Please send your PR upstream instead.
+
+<br><br>
+
+
+## Temporary notes
 
 > Q: Except pre-built binaries, which parts of the Qt install needs to be checked
 > for an "as complete build" of PySide2 as possible?

@@ -32,12 +32,13 @@ before_install:
   # Qt
   - curl -L -O https://download.qt.io/archive/qt/${QT_BRANCH}/${QT_VER}/${QT_INSTALLER_FILE}.dmg
   - hdiutil attach -noverify ${QT_INSTALLER_FILE}.dmg
-  - travis_wait 30 /Volumes/${QT_INSTALLER_FILE}/${QT_INSTALLER_FILE}.app/Contents/MacOS/${QT_INSTALLER_FILE} --script qt-installer-${QT_VER}-noninteractive.qs --verbose -platform minimal
+  # - travis_wait 30 /Volumes/${QT_INSTALLER_FILE}/${QT_INSTALLER_FILE}.app/Contents/MacOS/${QT_INSTALLER_FILE} --script qt-installer-${QT_VER}-noninteractive.qs --verbose -platform minimal
+  - travis_wait 30 /Volumes/${QT_INSTALLER_FILE}/${QT_INSTALLER_FILE}.app/Contents/MacOS/${QT_INSTALLER_FILE} --script qt-installer-everything-noninteractive.qs -platform minimal
 
   # libclang
-  - if [ "$QT_BRANCH" == "5.9" ]; then curl -L -O http://download.qt.io/development_releases/prebuilt/libclang/${LIBCLANG_FILE} ;
-  - if [ "$QT_BRANCH" == "5.9" ]; then 7z x ${LIBCLANG_FILE} ;
-  - if [ "$QT_BRANCH" == "5.9" ]; then export LLVM_INSTALL_DIR=$(pwd)/libclang ;
+  - if [ "$QT_BRANCH" == "5.9" ]; then curl -L -O http://download.qt.io/development_releases/prebuilt/libclang/${LIBCLANG_FILE} ; fi
+  - if [ "$QT_BRANCH" == "5.9" ]; then 7z x ${LIBCLANG_FILE} ; fi
+  - if [ "$QT_BRANCH" == "5.9" ]; then export LLVM_INSTALL_DIR=$(pwd)/libclang ; fi
 
   # OpenSSL already provided by Travis CI
   # - brew install openssl
@@ -52,6 +53,7 @@ before_install:
   - cmake --version
   - git --version
   - clang --version
+  - git --git-dir ~/pyside-setup/.git log -n 1
 
 
 before_script:
