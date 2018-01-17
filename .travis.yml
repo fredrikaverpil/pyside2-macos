@@ -85,7 +85,7 @@ deploy:
   # overwrite: true
   on:
     repo: fredrikaverpil/pyside2-macos
-    # tags: true
+    tags: true
 
 # after_deploy:
 # after_script:
