@@ -5,7 +5,7 @@ matrix:
     osx_image: xcode8.3
     language: generic
     env:
-    - QT_BRANCH=5.6
+    - PYSIDE2_BRANCH=5.6
     - QT_VER=5.6.3
     - QT_INSTALLER_FILE=qt-opensource-mac-x64-clang-5.6.3
 
@@ -13,7 +13,7 @@ matrix:
     osx_image: xcode8.3
     language: generic
     env:
-    - QT_BRANCH=5.9
+    - PYSIDE2_BRANCH=5.9
     - QT_VER=5.9.3
     - QT_INSTALLER_FILE=qt-opensource-mac-x64-5.9.3
     - LIBCLANG_FILE=libclang-release_39-mac.7z
@@ -30,15 +30,15 @@ before_install:
   - brew install p7zip
 
   # Qt
-  - curl -L -O https://download.qt.io/archive/qt/${QT_BRANCH}/${QT_VER}/${QT_INSTALLER_FILE}.dmg
+  - curl -L -O https://download.qt.io/archive/qt/${PYSIDE2_BRANCH}/${QT_VER}/${QT_INSTALLER_FILE}.dmg
   - hdiutil attach -noverify ${QT_INSTALLER_FILE}.dmg
   # - travis_wait 30 /Volumes/${QT_INSTALLER_FILE}/${QT_INSTALLER_FILE}.app/Contents/MacOS/${QT_INSTALLER_FILE} --script qt-installer-${QT_VER}-noninteractive.qs --verbose -platform minimal
-  - travis_wait 30 /Volumes/${QT_INSTALLER_FILE}/${QT_INSTALLER_FILE}.app/Contents/MacOS/${QT_INSTALLER_FILE} --script qt-installer-everything-noninteractive.qs -platform minimal
+  - travis_wait 30 /Volumes/${QT_INSTALLER_FILE}/${QT_INSTALLER_FILE}.app/Contents/MacOS/${QT_INSTALLER_FILE} --script qt-installer-${QT_VER}-noninteractive.qs -platform minimal
 
   # libclang
-  - if [ "$QT_BRANCH" == "5.9" ]; then curl -L -O http://download.qt.io/development_releases/prebuilt/libclang/${LIBCLANG_FILE} ; fi
-  - if [ "$QT_BRANCH" == "5.9" ]; then 7z x ${LIBCLANG_FILE} ; fi
-  - if [ "$QT_BRANCH" == "5.9" ]; then export LLVM_INSTALL_DIR=$(pwd)/libclang ; fi
+  - if [ "$PYSIDE2_BRANCH" == "5.9" ]; then curl -L -O http://download.qt.io/development_releases/prebuilt/libclang/${LIBCLANG_FILE} ; fi
+  - if [ "$PYSIDE2_BRANCH" == "5.9" ]; then 7z x ${LIBCLANG_FILE} ; fi
+  - if [ "$PYSIDE2_BRANCH" == "5.9" ]; then export LLVM_INSTALL_DIR=$(pwd)/libclang ; fi
 
   # OpenSSL already provided by Travis CI
   # - brew install openssl
@@ -62,7 +62,7 @@ before_script:
   # Fix "clang: warning: libstdc++ is deprecated; move to libc++ with a minimum deployment target of OS X 10.9 [-Wdeprecated]"
   # - export CLANG_CXX_LIBRARY="libc++"
 
-  - git clone --recursive --branch ${QT_BRANCH} https://code.qt.io/pyside/pyside-setup.git ~/pyside-setup
+  - git clone --recursive --branch ${PYSIDE2_BRANCH} https://code.qt.io/pyside/pyside-setup.git ~/pyside-setup
   - git --git-dir ~/pyside-setup/.git log -n 1
 
 
