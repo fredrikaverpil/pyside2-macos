@@ -29,6 +29,20 @@ Note: PRs attempting to fix upstream fixes will not be accepted. Please send you
 <br><br>
 
 
+## Notes tagging for a release
+
+Manual tagging causes Travis CI to generate a Github release and attach the built wheels to it. Tag using semver (`major.minor.patch`) but using the date of tagging/building, e.g. `v2018.01.01`, since PySide2 does not yet have a maintained version string.
+
+```bash
+git commit -am "Commit all changes..."
+git push  # triggers an Travis CI build
+git tag v2018.01.01
+git push origin v2018.01.01  # starts new build and generates release
+```
+
+<br><br>
+
+
 ## Temporary notes
 
 > Q: Except pre-built binaries, which parts of the Qt install needs to be checked
