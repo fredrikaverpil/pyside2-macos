@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/fredrikaverpil/pyside2-macos.svg?branch=master)](https://travis-ci.org/fredrikaverpil/pyside2-macos)
 
-:warning: This is a (possibly temporary?) development/research repository for building standalone PySide2 wheels on Windows.
+:warning: This is a (possibly temporary?) development/research repository for building standalone PySide2 wheels on macOS.
 
 <br><br>
 
