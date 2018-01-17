@@ -53,7 +53,6 @@ before_install:
   - cmake --version
   - git --version
   - clang --version
-  - git --git-dir ~/pyside-setup/.git log -n 1
 
 
 before_script:
@@ -64,6 +63,7 @@ before_script:
   # - export CLANG_CXX_LIBRARY="libc++"
 
   - git clone --recursive --branch ${QT_BRANCH} https://code.qt.io/pyside/pyside-setup.git ~/pyside-setup
+  - git --git-dir ~/pyside-setup/.git log -n 1
 
 
 script:
