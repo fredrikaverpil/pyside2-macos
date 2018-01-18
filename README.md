@@ -9,9 +9,12 @@
 
 ## Download the standalone wheels
 
-TBD
+[Releases](https://github.com/fredrikaverpil/pyside2-macos/releases) contain built PySide2 wheels.
+
+If you wish to check the wheels produced by e.g. a PR, see the [Travis CI build history](https://travis-ci.org/fredrikaverpil/pyside2-macos/builds), navigate to a build and download the attached artifacts.
 
 <br><br>
+
 
 
 ## Known issues
