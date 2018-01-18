@@ -5,21 +5,25 @@ matrix:
     osx_image: xcode8.3
     language: generic
     env:
-    - PYSIDE2_BRANCH=5.6
+    - PYSIDE_BRANCH=5.6
     - QT_VER=5.6.3
     - QT_INSTALLER_FILE=qt-opensource-mac-x64-clang-5.6.3
 
-  - os: osx
-    osx_image: xcode8.3
-    language: generic
-    env:
-    - PYSIDE2_BRANCH=5.9
-    - QT_VER=5.9.3
-    - QT_INSTALLER_FILE=qt-opensource-mac-x64-5.9.3
-    - LIBCLANG_FILE=libclang-release_39-mac.7z
+  # - os: osx
+  #   osx_image: xcode8.3
+  #   language: generic
+  #   env:
+  #   - PYSIDE_BRANCH=5.9
+  #   - QT_VER=5.9.3
+  #   - QT_INSTALLER_FILE=qt-opensource-mac-x64-5.9.3
+  #   - LIBCLANG_FILE=libclang-release_39-mac.7z
 
 
 before_install:
+  - pwd
+
+
+install:
   # Python 3.5
   - brew install https://raw.githubusercontent.com/Homebrew/homebrew-core/ec545d45d4512ace3570782283df4ecda6bb0044/Formula/python3.rb
 
@@ -30,40 +34,42 @@ before_install:
   - brew install p7zip
 
   # Qt
-  - curl -L -O https://download.qt.io/archive/qt/${PYSIDE2_BRANCH}/${QT_VER}/${QT_INSTALLER_FILE}.dmg
+  - curl -L -O https://download.qt.io/archive/qt/${PYSIDE_BRANCH}/${QT_VER}/${QT_INSTALLER_FILE}.dmg
   - hdiutil attach -noverify ${QT_INSTALLER_FILE}.dmg
   # - travis_wait 30 /Volumes/${QT_INSTALLER_FILE}/${QT_INSTALLER_FILE}.app/Contents/MacOS/${QT_INSTALLER_FILE} --script qt-installer-${QT_VER}-noninteractive.qs --verbose -platform minimal
   - travis_wait 30 /Volumes/${QT_INSTALLER_FILE}/${QT_INSTALLER_FILE}.app/Contents/MacOS/${QT_INSTALLER_FILE} --script qt-installer-${QT_VER}-noninteractive.qs -platform minimal
 
   # libclang
-  - if [ "$PYSIDE2_BRANCH" == "5.9" ]; then curl -L -O http://download.qt.io/development_releases/prebuilt/libclang/${LIBCLANG_FILE} ; fi
-  - if [ "$PYSIDE2_BRANCH" == "5.9" ]; then 7z x ${LIBCLANG_FILE} ; fi
-  - if [ "$PYSIDE2_BRANCH" == "5.9" ]; then export LLVM_INSTALL_DIR=$(pwd)/libclang ; fi
+  - if [ "$PYSIDE_BRANCH" == "5.9" ]; then curl -L -O http://download.qt.io/development_releases/prebuilt/libclang/${LIBCLANG_FILE} ; fi
+  - if [ "$PYSIDE_BRANCH" == "5.9" ]; then 7z x ${LIBCLANG_FILE} ; fi
+  - if [ "$PYSIDE_BRANCH" == "5.9" ]; then export LLVM_INSTALL_DIR=$(pwd)/libclang ; fi
 
   # OpenSSL already provided by Travis CI
   # - brew install openssl
   # https://github.com/travis-ci/travis-ci/issues/6698#issuecomment-252540860
   # - 'if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then export CFLAGS="-I/usr/local/opt/openssl/include $CFLAGS" LDFLAGS="-L/usr/local/opt/openssl/lib $LDFLAGS"; fi'
 
-  # CMake 3.0 already provided by Travis CI
+  # CMake 3.x already provided by Travis CI
   # - brew install cmake
 
-  # Summary
-  - python3 --version
-  - cmake --version
-  - git --version
-  - clang --version
-
-
-before_script:
   # Fix "fatal error: 'type_traits' file not found"
   # - export CPLUS_INCLUDE_PATH="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1/"
 
   # Fix "clang: warning: libstdc++ is deprecated; move to libc++ with a minimum deployment target of OS X 10.9 [-Wdeprecated]"
   # - export CLANG_CXX_LIBRARY="libc++"
 
-  - git clone --recursive --branch ${PYSIDE2_BRANCH} https://code.qt.io/pyside/pyside-setup.git ~/pyside-setup
+  - git clone --recursive --branch ${PYSIDE_BRANCH} https://code.qt.io/pyside/pyside-setup.git ~/pyside-setup
+
+
+before_script:
+  # Show which commit is being used
   - git --git-dir ~/pyside-setup/.git log -n 1
+
+  # Summary
+  - python3 --version
+  - cmake --version
+  - git --version
+  - clang --version
 
 
 script:
@@ -75,6 +81,7 @@ script:
 # after_failure:
 # before_deploy:
 
+
 deploy:
   provider: releases
   api_key:
@@ -83,10 +90,10 @@ deploy:
   file: "~/pyside-setup/dist/*.whl"
   overwrite: true
   skip_cleanup: true
-  # overwrite: true
   on:
     repo: fredrikaverpil/pyside2-macos
     tags: true
+
 
 # after_deploy:
 # after_script:
