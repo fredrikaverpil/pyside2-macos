@@ -8,6 +8,10 @@ matrix:
     - PYSIDE_BRANCH=5.6
     - QT_VER=5.6.3
     - QT_INSTALLER_FILE=qt-opensource-mac-x64-clang-5.6.3
+    - STACK_DIR=/home/travis/.stack-qt${QT_VER}
+    cache:
+      directories:
+        - ${STACK_DIR}
 
   # - os: osx
   #   osx_image: xcode8.3
@@ -21,6 +25,8 @@ matrix:
 
 before_install:
   - pwd
+  - echo ${STACK_DIR}
+  - if [ ! -d /home/travis/.stack ]; then mkdir -p /home/travis/.stack' ; fi
 
 
 install:
@@ -36,8 +42,7 @@ install:
   # Qt
   - curl -L -O https://download.qt.io/archive/qt/${PYSIDE_BRANCH}/${QT_VER}/${QT_INSTALLER_FILE}.dmg
   - hdiutil attach -noverify ${QT_INSTALLER_FILE}.dmg
-  # - travis_wait 30 /Volumes/${QT_INSTALLER_FILE}/${QT_INSTALLER_FILE}.app/Contents/MacOS/${QT_INSTALLER_FILE} --script qt-installer-${QT_VER}-noninteractive.qs --verbose -platform minimal
-  - travis_wait 30 /Volumes/${QT_INSTALLER_FILE}/${QT_INSTALLER_FILE}.app/Contents/MacOS/${QT_INSTALLER_FILE} --script qt-installer-${QT_VER}-noninteractive.qs -platform minimal
+  - travis_wait 50 /Volumes/${QT_INSTALLER_FILE}/${QT_INSTALLER_FILE}.app/Contents/MacOS/${QT_INSTALLER_FILE} --script qt-installer-${QT_VER}-noninteractive.qs -platform minimal
 
   # libclang
   - if [ "$PYSIDE_BRANCH" == "5.9" ]; then curl -L -O http://download.qt.io/development_releases/prebuilt/libclang/${LIBCLANG_FILE} ; fi
@@ -77,6 +82,7 @@ script:
   - python3 ~/pyside-setup/setup.py bdist_wheel --ignore-git --standalone --no-examples --qmake=$HOME/Qt/${QT_VER}/clang_64/bin/qmake --cmake=/usr/local/bin/cmake --jobs=3
 
 
+# before_cache
 # after_success:
 # after_failure:
 # before_deploy:
