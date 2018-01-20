@@ -8,10 +8,10 @@ matrix:
     - PYSIDE_BRANCH=5.6
     - QT_VER=5.6.3
     - QT_INSTALLER_FILE=qt-opensource-mac-x64-clang-5.6.3
-    - STACK_DIR=/home/travis/.stack-qt${QT_VER}
+    - QT_INSTALL_PATH=${HOME}/Qt-${QT_VER}
     cache:
       directories:
-        - ${STACK_DIR}
+        - ${QT_INSTALL_PATH}
 
   # - os: osx
   #   osx_image: xcode8.3
@@ -25,8 +25,6 @@ matrix:
 
 before_install:
   - pwd
-  - echo ${STACK_DIR}
-  - if [ ! -d /home/travis/.stack ]; then mkdir -p /home/travis/.stack ; fi
 
 
 install:
@@ -79,7 +77,7 @@ before_script:
 
 script:
   # Note, redacted --openssl=/usr/local/Cellar/openssl/1.0.2h_1/bin
-  - python3 ~/pyside-setup/setup.py bdist_wheel --ignore-git --standalone --no-examples --qmake=$HOME/Qt/${QT_VER}/clang_64/bin/qmake --cmake=/usr/local/bin/cmake --jobs=3
+  - python3 ~/pyside-setup/setup.py bdist_wheel --ignore-git --standalone --no-examples --qmake=$HOME/Qt-${QT_VER}/${QT_VER}/clang_64/bin/qmake --cmake=/usr/local/bin/cmake --jobs=3
 
 
 # before_cache
