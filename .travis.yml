@@ -12,6 +12,7 @@ matrix:
     cache:
       directories:
         - ${QT_INSTALL_PATH}
+        - timeout: 2000
 
   # - os: osx
   #   osx_image: xcode8.3
