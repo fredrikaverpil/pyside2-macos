@@ -77,10 +77,13 @@ before_script:
 
 script:
   # Note, redacted --openssl=/usr/local/Cellar/openssl/1.0.2h_1/bin
-  - python3 ~/pyside-setup/setup.py bdist_wheel --ignore-git --standalone --no-examples --qmake=$HOME/Qt-${QT_VER}/${QT_VER}/clang_64/bin/qmake --cmake=/usr/local/bin/cmake --jobs=3
+  # - python3 ~/pyside-setup/setup.py bdist_wheel --ignore-git --standalone --no-examples --qmake=$HOME/Qt-${QT_VER}/${QT_VER}/clang_64/bin/qmake --cmake=/usr/local/bin/cmake --jobs=3
+  - echo "Build temporarily disabled"
 
 
-# before_cache
+before_cache:
+  - echo "Initiating caching of ${QT_INSTALL_DIR}"
+
 # after_success:
 # after_failure:
 # before_deploy:
