@@ -10,9 +10,9 @@ matrix:
     - QT_INSTALLER_FILE=qt-opensource-mac-x64-clang-5.6.3
     - QT_INSTALL_PATH=${HOME}/Qt-${QT_VER}
     cache:
+      timeout: 2000
       directories:
-        - /Users/travis/Qt-5.6.3
-        - timeout: 2000
+        - ${QT_INSTALL_PATH}
 
   # - os: osx
   #   osx_image: xcode8.3
