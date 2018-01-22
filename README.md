@@ -7,6 +7,16 @@
 <br><br>
 
 
+## Sister projects
+
+- [pyside2-linux](https://github.com/fredrikaverpil/pyside2-linux)
+- pyside2-macos (this project)
+- [pyside2-windows](https://github.com/fredrikaverpil/pyside2-windows)
+
+
+<br><br>
+
+
 ## Download the standalone wheels
 
 [Releases](https://github.com/fredrikaverpil/pyside2-macos/releases) contain built PySide2 wheels.
