@@ -5,24 +5,15 @@ matrix:
     osx_image: xcode8.3
     language: generic
     env:
+    - NAME="Python 3.5, Qt 5.6"
     - PYSIDE_BRANCH=5.6
     - QT_VER=5.6.3
     - QT_INSTALLER_FILE=qt-opensource-mac-x64-clang-${QT_VER}
     - QT_INSTALL_PATH=${HOME}/Qt-${QT_VER}
-    - CACHE_NAME=${TRAVIS_OS_NAME}-${QT_VER}
     cache:
       timeout: 2000
       directories:
         - ${QT_INSTALL_PATH}
-
-  # - os: osx
-  #   osx_image: xcode8.3
-  #   language: generic
-  #   env:
-  #   - PYSIDE_BRANCH=5.9
-  #   - QT_VER=5.9.3
-  #   - QT_INSTALLER_FILE=qt-opensource-mac-x64-5.9.3
-  #   - LIBCLANG_FILE=libclang-release_39-mac.7z
 
 
 before_install:
@@ -40,9 +31,9 @@ install:
   - brew install p7zip
 
   # Qt
-  - if [ ! -d "/Users/travis/Qt-5.6.3" ] ; then curl -L -O https://download.qt.io/archive/qt/${PYSIDE_BRANCH}/${QT_VER}/${QT_INSTALLER_FILE}.dmg ; fi
-  - if [ ! -d "/Users/travis/Qt-5.6.3" ] ; then hdiutil attach -noverify ${QT_INSTALLER_FILE}.dmg ; fi
-  - if [ ! -d "/Users/travis/Qt-5.6.3" ] ; then travis_wait 50 /Volumes/${QT_INSTALLER_FILE}/${QT_INSTALLER_FILE}.app/Contents/MacOS/${QT_INSTALLER_FILE} --script qt-installer-${QT_VER}-noninteractive.qs -platform minimal ; fi
+  - if [ ! -d "${QT_INSTALL_PATH}" ] ; then curl -L -O https://download.qt.io/archive/qt/${PYSIDE_BRANCH}/${QT_VER}/${QT_INSTALLER_FILE}.dmg ; fi
+  - if [ ! -d "${QT_INSTALL_PATH}" ] ; then hdiutil attach -noverify ${QT_INSTALLER_FILE}.dmg ; fi
+  - if [ ! -d "${QT_INSTALL_PATH}" ] ; then travis_wait 50 /Volumes/${QT_INSTALLER_FILE}/${QT_INSTALLER_FILE}.app/Contents/MacOS/${QT_INSTALLER_FILE} --script qt-installer-${QT_VER}-noninteractive.qs -platform minimal ; fi
 
   # libclang
   - if [ "$PYSIDE_BRANCH" == "5.9" ]; then curl -L -O http://download.qt.io/development_releases/prebuilt/libclang/${LIBCLANG_FILE} ; fi
@@ -79,12 +70,11 @@ before_script:
 
 script:
   # Note, redacted --openssl=/usr/local/Cellar/openssl/1.0.2h_1/bin
-  # - python3 ~/pyside-setup/setup.py bdist_wheel --ignore-git --standalone --no-examples --qmake=$HOME/Qt-${QT_VER}/${QT_VER}/clang_64/bin/qmake --cmake=/usr/local/bin/cmake --jobs=3
-  - echo "Build temporarily disabled"
+  - python3 ~/pyside-setup/setup.py bdist_wheel --ignore-git --standalone --no-examples --qmake=$HOME/Qt-${QT_VER}/${QT_VER}/clang_64/bin/qmake --cmake=/usr/local/bin/cmake --jobs=3
 
 
-before_cache:
-  - echo "Initiating caching of ${QT_INSTALL_DIR}"
+# before_cache:
+#   - ...
 
 
 after_success:
