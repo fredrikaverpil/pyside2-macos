@@ -11,7 +11,7 @@ matrix:
     - QT_INSTALL_PATH=${HOME}/Qt-${QT_VER}
     cache:
       directories:
-        - ${QT_INSTALL_PATH}
+        - /Users/travis/Qt-5.6.3
         - timeout: 2000
 
   # - os: osx
