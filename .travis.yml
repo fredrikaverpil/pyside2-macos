@@ -41,7 +41,7 @@ install:
   # Qt
   - curl -L -O https://download.qt.io/archive/qt/${PYSIDE_BRANCH}/${QT_VER}/${QT_INSTALLER_FILE}.dmg
   - hdiutil attach -noverify ${QT_INSTALLER_FILE}.dmg
-  - travis_wait 50 /Volumes/${QT_INSTALLER_FILE}/${QT_INSTALLER_FILE}.app/Contents/MacOS/${QT_INSTALLER_FILE} --script qt-installer-${QT_VER}-noninteractive.qs -platform minimal
+  - if [ ! -d /Users/travis/Qt-5.6.3 ] ; then travis_wait 50 /Volumes/${QT_INSTALLER_FILE}/${QT_INSTALLER_FILE}.app/Contents/MacOS/${QT_INSTALLER_FILE} --script qt-installer-${QT_VER}-noninteractive.qs -platform minimal ; fi
 
   # libclang
   - if [ "$PYSIDE_BRANCH" == "5.9" ]; then curl -L -O http://download.qt.io/development_releases/prebuilt/libclang/${LIBCLANG_FILE} ; fi
@@ -85,8 +85,14 @@ script:
 before_cache:
   - echo "Initiating caching of ${QT_INSTALL_DIR}"
 
-# after_success:
-# after_failure:
+
+after_success:
+  - ls -alh
+
+
+after_failure:
+  - ls -alh
+
 # before_deploy:
 
 
