@@ -2,7 +2,6 @@
 
 [![Build Status](https://travis-ci.org/fredrikaverpil/pyside2-macos.svg?branch=master)](https://travis-ci.org/fredrikaverpil/pyside2-macos) [![Latest release](http://github-release-version.herokuapp.com/github/fredrikaverpil/pyside2-macos/release.svg?style=flat)](https://github.com/fredrikaverpil/pyside2-macos/releases/latest)
 
-:warning: This is a (possibly temporary?) development/research repository for building standalone PySide2 wheels on macOS.
 
 <br><br>
 
