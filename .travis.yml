@@ -40,8 +40,8 @@ install:
   - brew install p7zip
 
   # Qt
-  - curl -L -O https://download.qt.io/archive/qt/${PYSIDE_BRANCH}/${QT_VER}/${QT_INSTALLER_FILE}.dmg
-  - hdiutil attach -noverify ${QT_INSTALLER_FILE}.dmg
+  - if [ ! -d "/Users/travis/Qt-5.6.3" ] ; then curl -L -O https://download.qt.io/archive/qt/${PYSIDE_BRANCH}/${QT_VER}/${QT_INSTALLER_FILE}.dmg ; fi
+  - if [ ! -d "/Users/travis/Qt-5.6.3" ] ; then hdiutil attach -noverify ${QT_INSTALLER_FILE}.dmg ; fi
   - if [ ! -d "/Users/travis/Qt-5.6.3" ] ; then travis_wait 50 /Volumes/${QT_INSTALLER_FILE}/${QT_INSTALLER_FILE}.app/Contents/MacOS/${QT_INSTALLER_FILE} --script qt-installer-${QT_VER}-noninteractive.qs -platform minimal ; fi
 
   # libclang
