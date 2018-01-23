@@ -42,7 +42,7 @@ install:
   # libclang
   - if [ "$PYSIDE_BRANCH" == "5.9" ]; then curl -L -O http://download.qt.io/development_releases/prebuilt/libclang/${LIBCLANG_FILE} ; fi
   - if [ "$PYSIDE_BRANCH" == "5.9" ]; then 7z x ${LIBCLANG_FILE} ; fi
-  - if [ "$PYSIDE_BRANCH" == "5.9" ]; then export LLVM_INSTALL_DIR=$(pwd)/libclang ; fi
+  - if [ "$PYSIDE_BRANCH" == "5.9" ]; then export CLANG_INSTALL_DIR=$(pwd)/libclang ; fi
 
   # OpenSSL already provided by Travis CI
   # - brew install openssl
