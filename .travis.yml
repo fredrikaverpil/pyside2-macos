@@ -1,15 +1,18 @@
 matrix:
   include:
 
-  - os: osx
+  - env:
+      - NAME="Python 3.5, Qt 5.6"
+      - PYSIDE_BRANCH=5.6
+      - QT_VER=5.6.3
+      - CI_PY=/usr/bin/python3
+      - CI_CMAKE=/usr/local/bin/cmake
+      - CI_QMAKE=${HOME}/Qt-${QT_VER}/${QT_VER}/clang_64/bin/qmake
+      - QT_INSTALLER_FILE=qt-opensource-mac-x64-clang-${QT_VER}
+      - QT_INSTALL_PATH=${HOME}/Qt-${QT_VER}
+    os: osx
     osx_image: xcode8.3
     language: generic
-    env:
-    - NAME="Python 3.5, Qt 5.6"
-    - PYSIDE_BRANCH=5.6
-    - QT_VER=5.6.3
-    - QT_INSTALLER_FILE=qt-opensource-mac-x64-clang-${QT_VER}
-    - QT_INSTALL_PATH=${HOME}/Qt-${QT_VER}
     cache:
       timeout: 2000
       directories:
@@ -18,7 +21,7 @@ matrix:
 
 before_install:
   - pwd
-  - ls -alh ~
+  - ls -alh ${HOME}
 
 
 install:
@@ -63,17 +66,17 @@ before_script:
   - git --git-dir ~/pyside-setup/.git log -n 1
 
   # Summary
-  - python3 --version
-  - cmake --version
+  - ${CI_PY} --version
+  - ${CI_CMAKE} --version
+  - ${CI_QMAKE} --version
   - git --version
   - clang --version
-
   - tree ~/${QT_INSTALL_PATH}
 
 
 script:
   # Note, redacted --openssl=/usr/local/Cellar/openssl/1.0.2h_1/bin
-  - python3 ~/pyside-setup/setup.py bdist_wheel --ignore-git --standalone --no-examples --qmake=${QT_INSTALL_PATH}/${QT_VER}/clang_64/bin/qmake --cmake=/usr/local/bin/cmake --jobs=3
+  - ${CI_PY} ~/pyside-setup/setup.py bdist_wheel --ignore-git --standalone --no-examples --qmake=${CI_QMAKE} --cmake=${CI_CMAKE} --jobs=3
 
 
 before_cache:
