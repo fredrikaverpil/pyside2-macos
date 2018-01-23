@@ -32,7 +32,7 @@ install:
   - brew install libxslt libxml2
 
   # 7zip
-  - brew install tree p7zip
+  - brew install tree p7zip which
 
   # Qt
   - if [ ! -d "${QT_INSTALL_PATH}" ] ; then curl -L -O https://download.qt.io/archive/qt/${PYSIDE_BRANCH}/${QT_VER}/${QT_INSTALLER_FILE}.dmg ; fi
@@ -62,6 +62,9 @@ install:
 
 
 before_script:
+  # test debug
+  - which python3
+
   # Show which commit is being used
   - git --git-dir ~/pyside-setup/.git log -n 1
 
