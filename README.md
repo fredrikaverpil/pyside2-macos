@@ -38,19 +38,16 @@ Note: PRs attempting to fix upstream fixes will not be accepted. Please send you
 <br><br>
 
 
-## Notes tagging for a release
+### Tagging creates a new relese
 
 Manual tagging causes Travis CI to generate a Github release and attach the built wheels to it. Tag using semver (`[v]major.minor.patch` or `YY.MM.DD`), e.g. `2018.01.01`, since PySide2 does not yet have a maintained version string.
 
-
 ```bash
 git commit -am "Commit all changes..."
-git push  # triggers an Travis CI build
+git push  # triggers an AppVeyor build
 git tag 2018.01.01
-git push origin 2018.01.01  # starts new build and generates release
+git push origin 2018.01.01  # cancels previous build, starts new build and generates release
 ```
-
-<br><br>
 
 
 ## Temporary notes
