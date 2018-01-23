@@ -18,6 +18,7 @@ matrix:
 
 before_install:
   - pwd
+  - ls -alh ~
 
 
 install:
@@ -28,7 +29,7 @@ install:
   - brew install libxslt libxml2
 
   # 7zip
-  - brew install p7zip
+  - brew install tree p7zip
 
   # Qt
   - if [ ! -d "${QT_INSTALL_PATH}" ] ; then curl -L -O https://download.qt.io/archive/qt/${PYSIDE_BRANCH}/${QT_VER}/${QT_INSTALLER_FILE}.dmg ; fi
@@ -73,8 +74,9 @@ script:
   - python3 ~/pyside-setup/setup.py bdist_wheel --ignore-git --standalone --no-examples --qmake=$HOME/Qt-${QT_VER}/${QT_VER}/clang_64/bin/qmake --cmake=/usr/local/bin/cmake --jobs=3
 
 
-# before_cache:
-#   - ...
+before_cache:
+  - echo "About to perform caching of Qt installation dir..."
+  - tree ${QT_INSTALL_PATH}
 
 
 after_success:
@@ -83,6 +85,7 @@ after_success:
 
 after_failure:
   - ls -alh
+
 
 # before_deploy:
 
