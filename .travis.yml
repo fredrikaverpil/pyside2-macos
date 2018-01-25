@@ -68,7 +68,7 @@ install:
   # pip
   - curl -o /tmp/get-pip.py https://bootstrap.pypa.io/get-pip.py
   - ${CI_PY} /tmp/get-pip.py
-  - ${CI_PY} -m pip install --upgrade pip setuptools wheel
+  - ${CI_PY} -m pip install --user --upgrade pip setuptools wheel
 
   # lxml
   - brew install libxslt libxml2
