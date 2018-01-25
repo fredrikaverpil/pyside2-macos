@@ -2,10 +2,47 @@ matrix:
   include:
 
   - env:
+      - NAME="Python 2.7, Qt 5.6"
+      - PYSIDE_BRANCH=5.6
+      - QT_VER=5.6.3
+      - BREW_PY=""
+      - CI_PY=/usr/local/bin/python
+      - CI_CMAKE=/usr/local/bin/cmake
+      - CI_QMAKE=${HOME}/Qt-${QT_VER}/${QT_VER}/clang_64/bin/qmake
+      - QT_INSTALLER_FILE=qt-opensource-mac-x64-clang-${QT_VER}
+      - QT_INSTALL_PATH=${HOME}/Qt-${QT_VER}
+    os: osx
+    osx_image: xcode8.3
+    language: generic
+    # cache:
+    #   timeout: 2000
+    #   directories:
+    #     - ${QT_INSTALL_PATH}
+
+  - env:
       - NAME="Python 3.5, Qt 5.6"
       - PYSIDE_BRANCH=5.6
       - QT_VER=5.6.3
-      - CI_PY=python3
+      - BREW_PY=https://raw.githubusercontent.com/Homebrew/homebrew-core/ec545d45d4512ace3570782283df4ecda6bb0044/Formula/python3.rb
+      - CI_PY=/usr/local/bin/python3
+      - CI_CMAKE=/usr/local/bin/cmake
+      - CI_QMAKE=${HOME}/Qt-${QT_VER}/${QT_VER}/clang_64/bin/qmake
+      - QT_INSTALLER_FILE=qt-opensource-mac-x64-clang-${QT_VER}
+      - QT_INSTALL_PATH=${HOME}/Qt-${QT_VER}
+    os: osx
+    osx_image: xcode8.3
+    language: generic
+    # cache:
+    #   timeout: 2000
+    #   directories:
+    #     - ${QT_INSTALL_PATH}
+
+  - env:
+      - NAME="Python 3.6, Qt 5.6"
+      - PYSIDE_BRANCH=5.6
+      - QT_VER=5.6.3
+      - BREW_PY=https://raw.githubusercontent.com/Homebrew/homebrew-core/master/Formula/python3.rb
+      - CI_PY=/usr/local/bin/python3
       - CI_CMAKE=/usr/local/bin/cmake
       - CI_QMAKE=${HOME}/Qt-${QT_VER}/${QT_VER}/clang_64/bin/qmake
       - QT_INSTALLER_FILE=qt-opensource-mac-x64-clang-${QT_VER}
@@ -25,8 +62,8 @@ before_install:
 
 
 install:
-  # Python 3.5
-  - brew install https://raw.githubusercontent.com/Homebrew/homebrew-core/ec545d45d4512ace3570782283df4ecda6bb0044/Formula/python3.rb
+  # Python
+  - if [ "$BREW_PY" != "" ]; then brew install ${BREW_PY} ; fi
 
   # lxml
   - brew install libxslt libxml2
@@ -62,10 +99,6 @@ install:
 
 
 before_script:
-  # test debug
-  - python3 --version
-  - python3 -c "import sys; print(sys)"
-
   # Show which commit is being used
   - git --git-dir ~/pyside-setup/.git log -n 1
 
@@ -75,7 +108,6 @@ before_script:
   - ${CI_QMAKE} --version
   - git --version
   - clang --version
-  - tree ~/${QT_INSTALL_PATH}
 
 
 script:
@@ -85,11 +117,10 @@ script:
 
 before_cache:
   - echo "About to perform caching of Qt installation dir..."
-  - tree ${QT_INSTALL_PATH}
 
 
-after_success:
-  - ls -alh
+# after_success:
+#   - ls -alh
 
 
 after_failure:
@@ -113,5 +144,4 @@ deploy:
 
 
 # after_deploy:
-after_script:
-  - which python3
+# after_script:
