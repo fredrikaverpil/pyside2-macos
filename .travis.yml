@@ -7,7 +7,6 @@ matrix:
       - QT_VER=5.6.3
       - BREW_PY=""
       - CI_PY=/usr/bin/python
-      - CI_PIP=/usr/bin/pip
       - CI_CMAKE=/usr/local/bin/cmake
       - CI_QMAKE=${HOME}/Qt-${QT_VER}/${QT_VER}/clang_64/bin/qmake
       - QT_INSTALLER_FILE=qt-opensource-mac-x64-clang-${QT_VER}
@@ -26,7 +25,6 @@ matrix:
       - QT_VER=5.6.3
       - BREW_PY=https://raw.githubusercontent.com/Homebrew/homebrew-core/ec545d45d4512ace3570782283df4ecda6bb0044/Formula/python3.rb
       - CI_PY=/usr/local/bin/python3
-      - CI_PIP=/usr/local/bin/pip3
       - CI_CMAKE=/usr/local/bin/cmake
       - CI_QMAKE=${HOME}/Qt-${QT_VER}/${QT_VER}/clang_64/bin/qmake
       - QT_INSTALLER_FILE=qt-opensource-mac-x64-clang-${QT_VER}
@@ -45,7 +43,6 @@ matrix:
       - QT_VER=5.6.3
       - BREW_PY=https://raw.githubusercontent.com/Homebrew/homebrew-core/master/Formula/python3.rb
       - CI_PY=/usr/local/bin/python3
-      - CI_PIP=/usr/local/bin/pip3
       - CI_CMAKE=/usr/local/bin/cmake
       - CI_QMAKE=${HOME}/Qt-${QT_VER}/${QT_VER}/clang_64/bin/qmake
       - QT_INSTALLER_FILE=qt-opensource-mac-x64-clang-${QT_VER}
@@ -93,7 +90,7 @@ install:
   # CMake 3.x already provided by Travis CI
   # - brew install cmake
 
-  - ${CI_PIP} install --upgrade pip setuptools wheel
+  - ${CI_PY} -m pip install --upgrade pip setuptools wheel
 
   # Fix "fatal error: 'type_traits' file not found"
   # - export CPLUS_INCLUDE_PATH="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1/"
