@@ -63,8 +63,12 @@ before_install:
 
 install:
   # Python
-  - which python
   - if [ "$BREW_PY" != "" ]; then brew install ${BREW_PY} ; fi
+  
+  # pip
+  - curl -o /tmp/get-pip.py https://bootstrap.pypa.io/get-pip.py
+  - ${CI_PY} /tmp/get-pip.py
+  - ${CI_PY} -m pip install --upgrade pip setuptools wheel
 
   # lxml
   - brew install libxslt libxml2
@@ -89,8 +93,6 @@ install:
 
   # CMake 3.x already provided by Travis CI
   # - brew install cmake
-
-  - ${CI_PY} -m pip install --upgrade pip setuptools wheel
 
   # Fix "fatal error: 'type_traits' file not found"
   # - export CPLUS_INCLUDE_PATH="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1/"
