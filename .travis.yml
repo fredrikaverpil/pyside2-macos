@@ -63,6 +63,7 @@ before_install:
 
 install:
   # Python
+  - which python
   - if [ "$BREW_PY" != "" ]; then brew install ${BREW_PY} ; fi
 
   # lxml
