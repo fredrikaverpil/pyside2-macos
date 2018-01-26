@@ -64,7 +64,7 @@ matrix:
       - CI_CMAKE=/usr/local/bin/cmake
       - CI_QMAKE=${HOME}/Qt-${QT_VER}/${QT_VER}/clang_64/bin/qmake
       - LIBCLANG_FILE=libclang-release_50-mac.7z
-      - QT_INSTALLER_FILE=qt-opensource-mac-x64-clang-${QT_VER}
+      - QT_INSTALLER_FILE=qt-opensource-mac-x64-${QT_VER}
       - QT_INSTALL_PATH=${HOME}/Qt-${QT_VER}
     os: osx
     osx_image: xcode8.3
@@ -83,7 +83,7 @@ matrix:
       - CI_CMAKE=/usr/local/bin/cmake
       - CI_QMAKE=${HOME}/Qt-${QT_VER}/${QT_VER}/clang_64/bin/qmake
       - LIBCLANG_FILE=libclang-release_50-mac.7z
-      - QT_INSTALLER_FILE=qt-opensource-mac-x64-clang-${QT_VER}
+      - QT_INSTALLER_FILE=qt-opensource-mac-x64-${QT_VER}
       - QT_INSTALL_PATH=${HOME}/Qt-${QT_VER}
     os: osx
     osx_image: xcode8.3
