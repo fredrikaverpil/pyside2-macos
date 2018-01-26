@@ -12,7 +12,7 @@ matrix:
       - QT_INSTALLER_FILE=qt-opensource-mac-x64-clang-${QT_VER}
       - QT_INSTALL_PATH=${HOME}/Qt-${QT_VER}
     os: osx
-    osx_image: xcode8.3
+    osx_image: xcode6.4
     language: generic
     # cache:
     #   timeout: 2000
@@ -30,7 +30,7 @@ matrix:
       - QT_INSTALLER_FILE=qt-opensource-mac-x64-clang-${QT_VER}
       - QT_INSTALL_PATH=${HOME}/Qt-${QT_VER}
     os: osx
-    osx_image: xcode8.3
+    osx_image: xcode6.4
     language: generic
     # cache:
     #   timeout: 2000
@@ -48,7 +48,7 @@ matrix:
       - QT_INSTALLER_FILE=qt-opensource-mac-x64-clang-${QT_VER}
       - QT_INSTALL_PATH=${HOME}/Qt-${QT_VER}
     os: osx
-    osx_image: xcode8.3
+    osx_image: xcode6.4
     language: generic
     # cache:
     #   timeout: 2000
