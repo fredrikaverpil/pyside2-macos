@@ -5,7 +5,7 @@ matrix:
       - NAME="Python 2.7, Qt 5.6"
       - PYSIDE_BRANCH=5.6
       - QT_VER=5.6.3
-      - BREW_PY="python"
+      - BREW_PY=""
       - CI_PY=/usr/local/bin/python
       - CI_CMAKE=/usr/local/bin/cmake
       - CI_QMAKE=${HOME}/Qt-${QT_VER}/${QT_VER}/clang_64/bin/qmake
@@ -59,11 +59,12 @@ matrix:
 before_install:
   - pwd
   - ls -alh ${HOME}
+  - ls /usr/local/bin
 
 
 install:
   # Python
-  - brew install ${BREW_PY}
+  - if [ "$BREW_PY" != "" ]; then brew install ${BREW_PY} ; fi
 
   # pip
   - ${CI_PY} -m pip install --user --upgrade pip setuptools wheel
