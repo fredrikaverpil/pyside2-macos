@@ -104,6 +104,13 @@ install:
   - if [ ! -d "${QT_INSTALL_PATH}" ] ; then hdiutil attach -noverify ${QT_INSTALLER_FILE}.dmg ; fi
   - if [ ! -d "${QT_INSTALL_PATH}" ] ; then travis_wait 50 /Volumes/${QT_INSTALLER_FILE}/${QT_INSTALLER_FILE}.app/Contents/MacOS/${QT_INSTALLER_FILE} --script qt-installer-${QT_VER}-noninteractive.qs -platform minimal ; fi
 
+  # Debug
+  - ls -alh /Users/travis/
+  - ls -alh ${QT_INSTALL_PATH}
+  - ls -alh ${QT_INSTALL_PATH}/${QT_VER}
+  - ls -alh ${QT_INSTALL_PATH}/${QT_VER}/clang_64
+  - ls -alh ${QT_INSTALL_PATH}/${QT_VER}/clang_64/bin
+
   # libclang
   - if [ "$PYSIDE_BRANCH" == "5.9" ]; then curl -L -O http://download.qt.io/development_releases/prebuilt/libclang/${LIBCLANG_FILE} ; fi
   - if [ "$PYSIDE_BRANCH" == "5.9" ]; then 7z x ${LIBCLANG_FILE} ; fi
