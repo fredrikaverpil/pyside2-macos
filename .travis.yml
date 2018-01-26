@@ -56,7 +56,7 @@ matrix:
     #     - ${QT_INSTALL_PATH}
 
   - env:
-      - NAME="Python 2.7, Qt 5.6"
+      - NAME="Python 2.7, Qt 5.9"
       - PYSIDE_BRANCH=5.9
       - QT_VER=5.9.3
       - BREW_PY="python"
@@ -67,7 +67,7 @@ matrix:
       - QT_INSTALLER_FILE=qt-opensource-mac-x64-clang-${QT_VER}
       - QT_INSTALL_PATH=${HOME}/Qt-${QT_VER}
     os: osx
-    osx_image: xcode6.4
+    osx_image: xcode8.3
     language: generic
     # cache:
     #   timeout: 2000
@@ -75,7 +75,7 @@ matrix:
     #     - ${QT_INSTALL_PATH}
 
   - env:
-      - NAME="Python 3.5, Qt 5.6"
+      - NAME="Python 3.5, Qt 5.9"
       - PYSIDE_BRANCH=5.9
       - QT_VER=5.9.3
       - BREW_PY=https://raw.githubusercontent.com/Homebrew/homebrew-core/ec545d45d4512ace3570782283df4ecda6bb0044/Formula/python3.rb
@@ -86,7 +86,7 @@ matrix:
       - QT_INSTALLER_FILE=qt-opensource-mac-x64-clang-${QT_VER}
       - QT_INSTALL_PATH=${HOME}/Qt-${QT_VER}
     os: osx
-    osx_image: xcode6.4
+    osx_image: xcode8.3
     language: generic
     # cache:
     #   timeout: 2000
