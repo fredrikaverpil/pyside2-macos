@@ -5,8 +5,8 @@ matrix:
       - NAME="Python 2.7, Qt 5.6"
       - PYSIDE_BRANCH=5.6
       - QT_VER=5.6.3
-      - BREW_PY=""
-      - CI_PY=/usr/bin/python
+      - BREW_PY="python"
+      - CI_PY=/usr/local/bin/python
       - CI_CMAKE=/usr/local/bin/cmake
       - CI_QMAKE=${HOME}/Qt-${QT_VER}/${QT_VER}/clang_64/bin/qmake
       - QT_INSTALLER_FILE=qt-opensource-mac-x64-clang-${QT_VER}
@@ -59,6 +59,8 @@ matrix:
 before_install:
   - pwd
   - ls -alh ${HOME}
+  - ls -alh /usr/local/bin
+  - ls -alh /usr/local/Cellar
 
 
 install:
@@ -66,8 +68,6 @@ install:
   - if [ "$BREW_PY" != "" ]; then brew install ${BREW_PY} ; fi
 
   # pip
-  - if [ "$BREW_PY" == "" ]; then curl -o /tmp/get-pip.py https://bootstrap.pypa.io/get-pip.py ; fi
-  - if [ "$BREW_PY" == "" ]; then sudo ${CI_PY} /tmp/get-pip.py ; fi
   - ${CI_PY} -m pip install --user --upgrade pip setuptools wheel
 
   # lxml
