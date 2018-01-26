@@ -59,7 +59,7 @@ matrix:
       - NAME="Python 2.7, Qt 5.9"
       - PYSIDE_BRANCH=5.9
       - QT_VER=5.9.3
-      - BREW_PY="python"
+      - BREW_PY=""
       - CI_PY=/usr/local/bin/python2
       - CI_CMAKE=/usr/local/bin/cmake
       - CI_QMAKE=${HOME}/Qt-${QT_VER}/${QT_VER}/clang_64/bin/qmake
