@@ -56,6 +56,26 @@ matrix:
     #     - ${QT_INSTALL_PATH}
 
 
+  - env:
+      - NAME="Python 3.6, Qt 5.9"
+      - PYSIDE_BRANCH=5.9
+      - QT_VER=5.9.3
+      - BREW_PY=https://raw.githubusercontent.com/Homebrew/homebrew-core/master/Formula/python3.rb
+      - CI_PY=/usr/local/bin/python3
+      - CI_CMAKE=/usr/local/bin/cmake
+      - CI_QMAKE=${HOME}/Qt-${QT_VER}/${QT_VER}/clang_64/bin/qmake
+      - LIBCLANG_FILE=libclang-release_50-mac.7z
+      - QT_INSTALLER_FILE=qt-opensource-mac-x64-${QT_VER}
+      - QT_INSTALL_PATH=${HOME}/Qt-${QT_VER}
+    os: osx
+    osx_image: xcode8.3
+    language: generic
+    # cache:
+    #   timeout: 2000
+    #   directories:
+    #     - ${QT_INSTALL_PATH}
+
+
 before_install:
   - pwd
   - ls -alh ${HOME}
