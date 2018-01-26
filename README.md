@@ -38,6 +38,22 @@ Note: PRs attempting to fix upstream fixes will not be accepted. Please send you
 <br><br>
 
 
+## How does this work?
+
+### Travis CI setup
+
+A build matrix is set up in Travis CI, which will download and install all requirements before building PySide2.
+
+Unfortunately, I cannot just select all components of the Qt installation, as this will consume too much time out of the 50 minute build job limit. I'm trying to use Travis cache for this, but have been unsuccessful setting this up...
+
+If a `git tag` initiated the build, a Github release is peformed. All built wheels are deployed and attached to the Github release.
+
+Job auto cancellation is enabled for this project in Travis CI, which means that queued up jobs are cancelled if a new job is initiated within the same branch.
+
+
+<br><br>
+
+
 ### Tagging creates a new relese
 
 Manual tagging causes a Github release to be created through CI deploy. PySide2 wheels will be attached to the release notes as they are fully built. Tag using semver (`[v]major.minor.patch` or `YY.MM.DD`), e.g. `2018.01.01`, since PySide2 does not yet have a maintained version string.

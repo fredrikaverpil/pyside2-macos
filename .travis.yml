@@ -6,7 +6,7 @@ matrix:
       - PYSIDE_BRANCH=5.6
       - QT_VER=5.6.3
       - BREW_PY=""
-      - CI_PY=/usr/local/bin/python
+      - CI_PY=/usr/local/bin/python2
       - CI_CMAKE=/usr/local/bin/cmake
       - CI_QMAKE=${HOME}/Qt-${QT_VER}/${QT_VER}/clang_64/bin/qmake
       - QT_INSTALLER_FILE=qt-opensource-mac-x64-clang-${QT_VER}
