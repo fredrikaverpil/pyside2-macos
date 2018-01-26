@@ -80,6 +80,7 @@ before_install:
   - pwd
   - ls -alh ${HOME}
   - ls /usr/local/bin
+  - df -h
 
 
 install:
@@ -135,6 +136,7 @@ before_script:
   - ${CI_QMAKE} --version
   - git --version
   - clang --version
+  - df -h
 
 
 script:
