@@ -119,6 +119,7 @@ before_install:
   - ls /usr/local/bin
   - ls /usr/local/Cellar
   - ls -alh /usr/local/Cellar/openssl/
+  - ls -alh /usr/local/opt/openssl
   - sw_vers -productVersion
   - /usr/bin/xcodebuild -version
 
