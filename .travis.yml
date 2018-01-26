@@ -83,6 +83,9 @@ before_install:
 
 
 install:
+  # Fix issue on xcode6.4: https://github.com/Homebrew/brew/issues/3299#issuecomment-335837083
+  - brew update
+
   # Python
   - if [ "$BREW_PY" != "" ]; then brew install ${BREW_PY} ; fi
 
