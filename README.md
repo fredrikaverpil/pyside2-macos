@@ -44,7 +44,7 @@ Manual tagging causes a Github release to be created through CI deploy. PySide2 
 
 ```bash
 git commit -am "Commit all changes..."
-git push  # triggers an AppVeyor build
+git push  # triggers a build
 git tag 2018.01.01
 git push origin 2018.01.01  # cancels previous build, starts new build and generates release
 ```
