@@ -80,8 +80,8 @@ before_install:
   - pwd
   - ls -alh ${HOME}
   - ls /usr/local/bin
-  - df -h
-
+  - sw_vers -productVersion
+  - /usr/bin/xcodebuild -version
 
 install:
   # Fix issue on xcode6.4: https://github.com/Homebrew/brew/issues/3299#issuecomment-335837083
@@ -136,6 +136,8 @@ before_script:
   - ${CI_QMAKE} --version
   - git --version
   - clang --version
+  - sw_vers -productVersion
+  - /usr/bin/xcodebuild -version
   - df -h
 
 
