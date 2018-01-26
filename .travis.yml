@@ -59,13 +59,11 @@ matrix:
 before_install:
   - pwd
   - ls -alh ${HOME}
-  - ls -alh /usr/local/bin
-  - ls -alh /usr/local/Cellar
 
 
 install:
   # Python
-  - if [ "$BREW_PY" != "" ]; then brew install ${BREW_PY} ; fi
+  - brew install ${BREW_PY}
 
   # pip
   - ${CI_PY} -m pip install --user --upgrade pip setuptools wheel
