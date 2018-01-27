@@ -208,7 +208,9 @@ before_cache:
 #   - ls -alh
 
 
-# before_deploy:
+before_deploy:
+  # https://github.com/travis-ci/travis-ci/issues/6700
+  - rvm reinstall 1.9.3 --disable-binary
 
 
 deploy:
