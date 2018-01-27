@@ -77,3 +77,5 @@ git push origin 2018.01.01  # cancels previous build, starts new build and gener
 >
 > A: no, location needs to be checked in 5.6, but not in 5.9, and charts bindings are not
 > present in 5.6 afaik
+
+- QtC CI (Coin) for pyside-setup: https://testresults.qt.io/coin/?project=pyside%2Fpyside-setup
