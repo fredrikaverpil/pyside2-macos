@@ -171,12 +171,12 @@ install:
   # Fix "clang: warning: libstdc++ is deprecated; move to libc++ with a minimum deployment target of OS X 10.9 [-Wdeprecated]"
   # - export CLANG_CXX_LIBRARY="libc++"
 
-  - git clone --recursive --branch ${PYSIDE_BRANCH} https://code.qt.io/pyside/pyside-setup.git ~/pyside-setup
+  - git clone --recursive --branch ${PYSIDE_BRANCH} https://code.qt.io/pyside/pyside-setup.git pyside-setup
 
 
 before_script:
   # Show which commit is being used
-  - git --git-dir ~/pyside-setup/.git log -n 1
+  - git --git-dir pyside-setup/.git log -n 1
 
   # Summary
   - ${CI_PY} --version
@@ -192,12 +192,12 @@ before_script:
 
 script:
   # Note, redacted --openssl=/usr/local/Cellar/openssl/1.0.2h_1/bin
-  - ${CI_PY} ~/pyside-setup/setup.py bdist_wheel --ignore-git --standalone --no-examples --qmake=${CI_QMAKE} --cmake=${CI_CMAKE} --openssl=/usr/local/opt/openssl/bin --jobs=3
-  - ls -alh ~/pyside-setup/dist
+  - ${CI_PY} pyside-setup/setup.py bdist_wheel --ignore-git --standalone --no-examples --qmake=${CI_QMAKE} --cmake=${CI_CMAKE} --openssl=/usr/local/opt/openssl/bin --jobs=3
+  - ls -alh pyside-setup/dist
 
 
-before_cache:
-  - echo "About to perform caching of Qt installation dir..."
+# before_cache:
+#   - echo "About to perform caching of Qt installation dir..."
 
 
 # after_success:
@@ -217,7 +217,7 @@ deploy:
   api_key:
     secure: UpN7G0GHDL+pbNdxnwYQuQO8hlkJUqk2xYvSioHJHCSi/BP8Xihsnw40ohhbJTnm2q1d38vreee/MvaDCKBnJ53rsBRa3FUUHDudGlPiu9/v0mkBvu18waOdsH4njUSP3vnKU+HRDB1Mha1CtksyQU6G0SGKg96YjSqAQa+9hi0XxtDRzedekSQZWv8MiXObz7aLNvtJBib66Od3KcEsboiHI4LIKHywPyXUOwO7XGQE7d4D+b0RjGKoZMLABY+kd5z+wzx93KRlI2Q+yUFxPkFWa1j4OWLyoC/oDCRahve3+rQQtt60W95bBLQrqVl+ptnyzav6nz3chgEZAvxGt07Cs+dCFT8qQtr+v44aqnOStoKadb0GHexTjb37oVnDheSrNcrnXc/u5ZlYNNnDU0xsE5O2al57peyiXOb6HwPiB1BQxBUj39BdPHZMzJc8iL0O8hx2fP5J2ysdvwpnYGB3Xy6gkeRSGlFjZHiMt+7nlPgqWYolvDvE20ITl6zMOonSsTWkS1+F3C/7eJNbQL6s0gEVj22/b4l2WSKKtukT8CGGmAhunEZL02XDnhm3SijPvHp+kA9xbWJ2aMkcueibOOkaUwqbY6Prvp1MYGLGLfpRr3A7EkzPZ2FCzuWq4DDtNR0nuBtrh8euMdYCUb+QCysoYkpt5i+hDQRS8SE=
   file_glob: true
-  file: "~/pyside-setup/dist/*.whl"
+  file: pyside-setup/dist/*.whl
   overwrite: true
   skip_cleanup: true
   on:
