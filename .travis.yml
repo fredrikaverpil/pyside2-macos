@@ -120,6 +120,7 @@ before_install:
   - ls /usr/local/Cellar
   - sw_vers -productVersion
   - /usr/bin/xcodebuild -version
+  - set
 
 
 install:
