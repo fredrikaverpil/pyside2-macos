@@ -118,8 +118,6 @@ before_install:
   - ls -alh ${HOME}
   - ls /usr/local/bin
   - ls /usr/local/Cellar
-  - ls -alh /usr/local/Cellar/openssl/
-  - ls -alh /usr/local/opt/openssl
   - sw_vers -productVersion
   - /usr/bin/xcodebuild -version
 
@@ -157,19 +155,8 @@ install:
   - if [ "$PYSIDE_BRANCH" == "5.9" ]; then 7z x ${LIBCLANG_FILE} ; fi
   - if [ "$PYSIDE_BRANCH" == "5.9" ]; then export CLANG_INSTALL_DIR=$(pwd)/libclang ; fi
 
-  # OpenSSL already provided by Travis CI
-  # - brew install openssl
-  # https://github.com/travis-ci/travis-ci/issues/6698#issuecomment-252540860
-  # - 'if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then export CFLAGS="-I/usr/local/opt/openssl/include $CFLAGS" LDFLAGS="-L/usr/local/opt/openssl/lib $LDFLAGS"; fi'
-
   # CMake 3.x already provided by Travis CI
   # - brew install cmake
-
-  # Fix "fatal error: 'type_traits' file not found"
-  # - export CPLUS_INCLUDE_PATH="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1/"
-
-  # Fix "clang: warning: libstdc++ is deprecated; move to libc++ with a minimum deployment target of OS X 10.9 [-Wdeprecated]"
-  # - export CLANG_CXX_LIBRARY="libc++"
 
   - git clone --recursive --branch ${PYSIDE_BRANCH} https://code.qt.io/pyside/pyside-setup.git pyside-setup
 
@@ -191,8 +178,7 @@ before_script:
 
 
 script:
-  # Note, redacted --openssl=/usr/local/Cellar/openssl/1.0.2h_1/bin
-  - ${CI_PY} pyside-setup/setup.py bdist_wheel --ignore-git --standalone --no-examples --qmake=${CI_QMAKE} --cmake=${CI_CMAKE} --openssl=/usr/local/opt/openssl/bin/ --jobs=3
+  - ${CI_PY} pyside-setup/setup.py bdist_wheel --ignore-git --standalone --no-examples --qmake=${CI_QMAKE} --cmake=${CI_CMAKE} --jobs=3
   - ls -alh pyside-setup/dist
 
 
