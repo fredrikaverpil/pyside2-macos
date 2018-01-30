@@ -122,6 +122,7 @@ before_install:
   - ls -alh /usr/local/opt/openssl
   - sw_vers -productVersion
   - /usr/bin/xcodebuild -version
+  - ls /usr/local/opt/openssl/bin
 
 
 install:
