@@ -120,7 +120,6 @@ before_install:
   - ls /usr/local/Cellar
   - sw_vers -productVersion
   - /usr/bin/xcodebuild -version
-  - set
 
 
 install:
@@ -158,8 +157,6 @@ install:
 
   # CMake 3.x already provided by Travis CI
   # - brew install cmake
-
-  - set
 
   - git clone --recursive --branch ${PYSIDE_BRANCH} https://code.qt.io/pyside/pyside-setup.git pyside-setup
 
