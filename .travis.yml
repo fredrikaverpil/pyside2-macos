@@ -192,7 +192,7 @@ before_script:
 
 script:
   # Note, redacted --openssl=/usr/local/Cellar/openssl/1.0.2h_1/bin
-  - ${CI_PY} pyside-setup/setup.py bdist_wheel --ignore-git --standalone --no-examples --qmake=${CI_QMAKE} --cmake=${CI_CMAKE} --openssl=/usr/local/opt/openssl/bin/openssl --jobs=3
+  - ${CI_PY} pyside-setup/setup.py bdist_wheel --ignore-git --standalone --no-examples --qmake=${CI_QMAKE} --cmake=${CI_CMAKE} --openssl=/usr/local/opt/openssl/bin/ --jobs=3
   - ls -alh pyside-setup/dist
 
 
