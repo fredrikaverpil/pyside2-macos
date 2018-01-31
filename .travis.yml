@@ -157,7 +157,7 @@ install:
   - if [ "$PYSIDE_BRANCH" == "5.9" ]; then 7z x ${LIBCLANG_FILE} ; fi
   - if [ "$PYSIDE_BRANCH" == "5.9" ]; then export CLANG_INSTALL_DIR=$(pwd)/libclang ; fi
   - if [ "$PYSIDE_BRANCH" == "5.9" ]; then rm -rf ${LIBCLANG_FILE} ; fi
-  - if [ "$PYSIDE_BRANCH" == "5.9" ]; then rm -rf $(pwd)/libclang ; fi
+
 
   # CMake 3.x already provided by Travis CI
   # - brew install cmake
