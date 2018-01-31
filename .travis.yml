@@ -142,6 +142,8 @@ install:
   - if [ ! -d "${QT_INSTALL_PATH}" ] ; then curl -L -O https://download.qt.io/archive/qt/${PYSIDE_BRANCH}/${QT_VER}/${QT_INSTALLER_FILE}.dmg ; fi
   - if [ ! -d "${QT_INSTALL_PATH}" ] ; then hdiutil attach -noverify ${QT_INSTALLER_FILE}.dmg ; fi
   - if [ ! -d "${QT_INSTALL_PATH}" ] ; then travis_wait 50 /Volumes/${QT_INSTALLER_FILE}/${QT_INSTALLER_FILE}.app/Contents/MacOS/${QT_INSTALLER_FILE} --script qt-installer-${QT_VER}-noninteractive.qs -platform minimal ; fi
+  - if [ -d "${QT_INSTALL_PATH}" ] ; then hdiutil detach /Volumes/${QT_INSTALLER_FILE} ; fi
+  - if [ -d "${QT_INSTALL_PATH}" ] ; then rm -rf ${QT_INSTALLER_FILE}.dmg ; fi
 
   # Debug
   - ls -alh /Users/travis/
@@ -154,6 +156,8 @@ install:
   - if [ "$PYSIDE_BRANCH" == "5.9" ]; then curl -L -O http://download.qt.io/development_releases/prebuilt/libclang/${LIBCLANG_FILE} ; fi
   - if [ "$PYSIDE_BRANCH" == "5.9" ]; then 7z x ${LIBCLANG_FILE} ; fi
   - if [ "$PYSIDE_BRANCH" == "5.9" ]; then export CLANG_INSTALL_DIR=$(pwd)/libclang ; fi
+  - if [ "$PYSIDE_BRANCH" == "5.9" ]; then rm -rf ${LIBCLANG_FILE} ; fi
+  - if [ "$PYSIDE_BRANCH" == "5.9" ]; then rm -rf $(pwd)/libclang ; fi
 
   # CMake 3.x already provided by Travis CI
   # - brew install cmake
