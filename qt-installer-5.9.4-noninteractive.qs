@@ -21,7 +21,7 @@ Controller.prototype.IntroductionPageCallback = function() {
 
 Controller.prototype.TargetDirectoryPageCallback = function()
 {
-    gui.currentPageWidget().TargetDirectoryLineEdit.setText(installer.value("HomeDir") + "/Qt-5.9.3");
+    gui.currentPageWidget().TargetDirectoryLineEdit.setText(installer.value("HomeDir") + "/Qt-5.9.4");
     gui.clickButton(buttons.NextButton);
 }
 
@@ -31,27 +31,27 @@ Controller.prototype.ComponentSelectionPageCallback = function() {
     // widget.selectAll();
     widget.deselectAll();
 
-    widget.selectComponent("qt.593.clang_64")
-    // widget.selectComponent("qt.593.doc")
-    // widget.selectComponent("qt.593.examples")
-    widget.selectComponent("qt.593.qtcharts")
-    widget.selectComponent("qt.593.qtcharts.clang_64")
-    widget.selectComponent("qt.593.qtdatavis3d")
-    widget.selectComponent("qt.593.qtdatavis3d.clang_64")
-    widget.selectComponent("qt.593.qtnetworkauth")
-    widget.selectComponent("qt.593.qtnetworkauth.clang_64")
-    widget.selectComponent("qt.593.qtpurchasing")
-    widget.selectComponent("qt.593.qtpurchasing.clang_64")
-    widget.selectComponent("qt.593.qtremoteobjects")
-    widget.selectComponent("qt.593.qtremoteobjects.clang_64")
-    widget.selectComponent("qt.593.qtscript")
-    widget.selectComponent("qt.593.qtspeech")
-    widget.selectComponent("qt.593.qtspeech.clang_64")
-    widget.selectComponent("qt.593.qtvirtualkeyboard")
-    widget.selectComponent("qt.593.qtvirtualkeyboard.clang_64")
-    widget.selectComponent("qt.593.qtwebengine")
-    widget.selectComponent("qt.593.qtwebengine.clang_64")
-    // widget.selectComponent("qt.593.src")
+    widget.selectComponent("qt.594.clang_64")
+    // widget.selectComponent("qt.594.doc")
+    // widget.selectComponent("qt.594.examples")
+    widget.selectComponent("qt.594.qtcharts")
+    widget.selectComponent("qt.594.qtcharts.clang_64")
+    widget.selectComponent("qt.594.qtdatavis3d")
+    widget.selectComponent("qt.594.qtdatavis3d.clang_64")
+    widget.selectComponent("qt.594.qtnetworkauth")
+    widget.selectComponent("qt.594.qtnetworkauth.clang_64")
+    widget.selectComponent("qt.594.qtpurchasing")
+    widget.selectComponent("qt.594.qtpurchasing.clang_64")
+    widget.selectComponent("qt.594.qtremoteobjects")
+    widget.selectComponent("qt.594.qtremoteobjects.clang_64")
+    widget.selectComponent("qt.594.qtscript")
+    widget.selectComponent("qt.594.qtspeech")
+    widget.selectComponent("qt.594.qtspeech.clang_64")
+    widget.selectComponent("qt.594.qtvirtualkeyboard")
+    widget.selectComponent("qt.594.qtvirtualkeyboard.clang_64")
+    widget.selectComponent("qt.594.qtwebengine")
+    widget.selectComponent("qt.594.qtwebengine.clang_64")
+    // widget.selectComponent("qt.594.src")
     widget.selectComponent("qt.tools.qtcreator")
 
     gui.clickButton(buttons.NextButton);
