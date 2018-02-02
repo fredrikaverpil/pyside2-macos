@@ -25,15 +25,17 @@ A build matrix is set up in Travis CI, which will download and install all requi
 
 Unfortunately, I cannot just select all components of the Qt installation, as this will consume too much time out of the 50 minute build job limit. I'm trying to use Travis cache for this, but have been unsuccessful setting this up...
 
-The [lowest available macOS version on Travis](https://docs.travis-ci.com/user/reference/osx/#OS-X-Version) CI is 10.10. Pre-built Qt binaries use:
-- Qt 5.6: macOS 10.10
-- Qt 5.9: macOS 10.12
-
-This means PySide2-5.6 works on macOS 10.10+ and PySide2-5.9 works on macOS 10.12+.
-
 If a `git tag` initiated the build, a Github release is peformed. All built wheels are deployed and attached to the Github release.
 
 Job auto cancellation is enabled for this project in Travis CI, which means that queued up jobs are cancelled if a new job is initiated within the same branch.
+
+### macOS versions
+
+The [lowest available macOS version on Travis](https://docs.travis-ci.com/user/reference/osx/#OS-X-Version) CI is 10.10. Pre-built "Packaging" Qt binaries use:
+- [Qt 5.6](http://code.qt.io/cgit/qt/qt5.git/tree/coin/platform_configs/default.txt?h=5.6): macOS 10.11
+- [Qt 5.9](http://code.qt.io/cgit/qt/qt5.git/tree/coin/platform_configs/default.txt?h=5.9): macOS 10.12
+
+PySide2 needs to be built on the macOS version corresponding to the macOS version used to build the pre-compiled Qt binaries. This means PySide2-5.6 will work on macOS 10.11+ and PySide2-5.9 will work on macOS 10.12+.
 
 
 ### Tagging creates a new relese
