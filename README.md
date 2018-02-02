@@ -31,6 +31,23 @@ Job auto cancellation is enabled for this project in Travis CI, which means that
 
 PySide2 needs to be built on the macOS version corresponding to the macOS version used to build the pre-compiled Qt binaries. This means PySide2-5.6 will work on macOS 10.11+ and PySide2-5.9 will work on macOS 10.12+.
 
+### Target deployment platform versions
+
+See Coin CI platform configs for:
+- [Qt 5.6 "Packaging" tag macOS version](http://code.qt.io/cgit/qt/qt5.git/tree/coin/platform_configs/default.txt?h=5.6)
+- [Qt 5.9 "Packaging" tag macOS version](http://code.qt.io/cgit/qt/qt5.git/tree/coin/platform_configs/default.txt?h=5.9)
+
+Go to https://testresults.qt.io/coin/  and find a Qt5 build with a matching config. Look at the build log of `qtbase`, search for `-mmacosx-version` and get the value of this option. This marks the lowest target deployment version.
+
+The value can be set as environment variable `MACOSX_DEPLOYMENT_TARGET` during build time.
+
+Note: a simpler way of finding the deployment target is to grep for `QMAKE_MACOSX_DEPLOYMENT_TARGET` in `qtbase`, which is set in mkspecs/macx-clang/qmake.conf in 5.6,5.9,5.10 at least.
+
+### Build platform versions
+
+The official advice is use latest macOS, latest xcode, latest sdk. Pragmatic advice is whatever runs on your machine and succeeds at building.
+
+
 
 ### Tagging creates a new relese
 
