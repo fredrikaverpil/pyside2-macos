@@ -32,9 +32,9 @@ Job auto cancellation is enabled for this project in Travis CI, which means that
 
 ### Target deployment platform versions
 
-See Coin CI platform configs for:
-- [Qt 5.6 "Packaging" tag macOS version](http://code.qt.io/cgit/qt/qt5.git/tree/coin/platform_configs/default.txt?h=5.6)
-- [Qt 5.9 "Packaging" tag macOS version](http://code.qt.io/cgit/qt/qt5.git/tree/coin/platform_configs/default.txt?h=5.9)
+See Coin CI macOS platform configs marked with "Packaging" tag for:
+- [Qt 5.6](http://code.qt.io/cgit/qt/qt5.git/tree/coin/platform_configs/default.txt?h=5.6)
+- [Qt 5.9](http://code.qt.io/cgit/qt/qt5.git/tree/coin/platform_configs/default.txt?h=5.9)
 
 Go to https://testresults.qt.io/coin/ and find a Qt5 build with a matching config. Look at the build log of `qtbase`, search for `-mmacosx-version` and get the value of this option. This marks the lowest target deployment version.
 
