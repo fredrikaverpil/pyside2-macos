@@ -29,7 +29,6 @@ If a `git tag` initiated the build, a Github release is peformed. All built whee
 
 Job auto cancellation is enabled for this project in Travis CI, which means that queued up jobs are cancelled if a new job is initiated within the same branch.
 
-PySide2 needs to be built on the macOS version corresponding to the macOS version used to build the pre-compiled Qt binaries. This means PySide2-5.6 will work on macOS 10.11+ and PySide2-5.9 will work on macOS 10.12+.
 
 ### Target deployment platform versions
 
