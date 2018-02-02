@@ -25,6 +25,11 @@ A build matrix is set up in Travis CI, which will download and install all requi
 
 Unfortunately, I cannot just select all components of the Qt installation, as this will consume too much time out of the 50 minute build job limit. I'm trying to use Travis cache for this, but have been unsuccessful setting this up...
 
+The lowest available macOS version on Travis CI is 10.10. Pre-built Qt binaries use:
+- Qt 5.6: macOS 10.10
+- Qt 5.9: macOS 10.12
+This means PySide2-5.6 works on macOS 10.10+ and PySide2-5.9 works on macOS 10.12+.
+
 If a `git tag` initiated the build, a Github release is peformed. All built wheels are deployed and attached to the Github release.
 
 Job auto cancellation is enabled for this project in Travis CI, which means that queued up jobs are cancelled if a new job is initiated within the same branch.
@@ -49,22 +54,9 @@ All upstream issues should be reported in the [official PySide issue tracker](ht
 Note: PRs attempting to fix upstream fixes will not be accepted. Please send your PR upstream instead.
 
 
-### Ask questions in the PySide/PySide2 gitter
+### Ask questions in the PySide/PySide2 Gitter
 
 If you have any general questions, please check out the [PySide2 Gitter community](https://gitter.im/PySide/pyside2). If you prefer IRC, check out `#qt-pyside` on irc.freenode.net.
-
-
-## Temporary notes
-
-> Q: Except pre-built binaries, which parts of the Qt install needs to be checked
-> for an "as complete build" of PySide2 as possible?
->
-> A: Aside from the platform, you might want to check charts, webengine, location, and script
-> 
-> Q: is this true for both 5.6 and 5.9 branches of PySide2?
->
-> A: no, location needs to be checked in 5.6, but not in 5.9, and charts bindings are not
-> present in 5.6 afaik
 
 
 ### Useful links
