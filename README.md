@@ -25,7 +25,7 @@ A build matrix is set up in Travis CI, which will download and install all requi
 
 Unfortunately, I cannot just select all components of the Qt installation, as this will consume too much time out of the 50 minute build job limit. I'm trying to use Travis cache for this, but have been unsuccessful setting this up...
 
-The lowest available macOS version on Travis CI is 10.10. Pre-built Qt binaries use:
+The [lowest available macOS version on Travis](https://docs.travis-ci.com/user/reference/osx/#OS-X-Version) CI is 10.10. Pre-built Qt binaries use:
 - Qt 5.6: macOS 10.10
 - Qt 5.9: macOS 10.12
 
