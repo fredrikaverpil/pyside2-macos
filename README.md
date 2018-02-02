@@ -28,6 +28,7 @@ Unfortunately, I cannot just select all components of the Qt installation, as th
 The lowest available macOS version on Travis CI is 10.10. Pre-built Qt binaries use:
 - Qt 5.6: macOS 10.10
 - Qt 5.9: macOS 10.12
+
 This means PySide2-5.6 works on macOS 10.10+ and PySide2-5.9 works on macOS 10.12+.
 
 If a `git tag` initiated the build, a Github release is peformed. All built wheels are deployed and attached to the Github release.
