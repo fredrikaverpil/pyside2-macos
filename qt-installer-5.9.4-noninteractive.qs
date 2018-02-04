@@ -8,7 +8,7 @@ function Controller() {
 }
 
 Controller.prototype.WelcomePageCallback = function() {
-    gui.clickButton(buttons.NextButton);
+    gui.clickButton(buttons.NextButton, 3000);
 }
 
 Controller.prototype.CredentialsPageCallback = function() {
@@ -21,38 +21,15 @@ Controller.prototype.IntroductionPageCallback = function() {
 
 Controller.prototype.TargetDirectoryPageCallback = function()
 {
-    gui.currentPageWidget().TargetDirectoryLineEdit.setText(installer.value("HomeDir") + "/Qt-5.9.3");
+    gui.currentPageWidget().TargetDirectoryLineEdit.setText(installer.value("HomeDir") + "/Qt-5.9.4");
     gui.clickButton(buttons.NextButton);
 }
 
 Controller.prototype.ComponentSelectionPageCallback = function() {
     var widget = gui.currentPageWidget();
 
-    // widget.selectAll();
-    widget.deselectAll();
-
-    widget.selectComponent("qt.593.clang_64")
-    // widget.selectComponent("qt.593.doc")
-    // widget.selectComponent("qt.593.examples")
-    widget.selectComponent("qt.593.qtcharts")
-    widget.selectComponent("qt.593.qtcharts.clang_64")
-    widget.selectComponent("qt.593.qtdatavis3d")
-    widget.selectComponent("qt.593.qtdatavis3d.clang_64")
-    widget.selectComponent("qt.593.qtnetworkauth")
-    widget.selectComponent("qt.593.qtnetworkauth.clang_64")
-    widget.selectComponent("qt.593.qtpurchasing")
-    widget.selectComponent("qt.593.qtpurchasing.clang_64")
-    widget.selectComponent("qt.593.qtremoteobjects")
-    widget.selectComponent("qt.593.qtremoteobjects.clang_64")
-    widget.selectComponent("qt.593.qtscript")
-    widget.selectComponent("qt.593.qtspeech")
-    widget.selectComponent("qt.593.qtspeech.clang_64")
-    widget.selectComponent("qt.593.qtvirtualkeyboard")
-    widget.selectComponent("qt.593.qtvirtualkeyboard.clang_64")
-    widget.selectComponent("qt.593.qtwebengine")
-    widget.selectComponent("qt.593.qtwebengine.clang_64")
-    // widget.selectComponent("qt.593.src")
-    widget.selectComponent("qt.tools.qtcreator")
+    widget.selectAll();
+    widget.deselectComponent('qt.594.src')
 
     gui.clickButton(buttons.NextButton);
 }
