@@ -28,31 +28,8 @@ Controller.prototype.TargetDirectoryPageCallback = function()
 Controller.prototype.ComponentSelectionPageCallback = function() {
     var widget = gui.currentPageWidget();
 
-    // widget.selectAll();
-    widget.deselectAll();
-
-    widget.selectComponent("qt.594.clang_64")
-    // widget.selectComponent("qt.594.doc")
-    // widget.selectComponent("qt.594.examples")
-    widget.selectComponent("qt.594.qtcharts")
-    widget.selectComponent("qt.594.qtcharts.clang_64")
-    widget.selectComponent("qt.594.qtdatavis3d")
-    widget.selectComponent("qt.594.qtdatavis3d.clang_64")
-    widget.selectComponent("qt.594.qtnetworkauth")
-    widget.selectComponent("qt.594.qtnetworkauth.clang_64")
-    widget.selectComponent("qt.594.qtpurchasing")
-    widget.selectComponent("qt.594.qtpurchasing.clang_64")
-    widget.selectComponent("qt.594.qtremoteobjects")
-    widget.selectComponent("qt.594.qtremoteobjects.clang_64")
-    widget.selectComponent("qt.594.qtscript")
-    widget.selectComponent("qt.594.qtspeech")
-    widget.selectComponent("qt.594.qtspeech.clang_64")
-    widget.selectComponent("qt.594.qtvirtualkeyboard")
-    widget.selectComponent("qt.594.qtvirtualkeyboard.clang_64")
-    widget.selectComponent("qt.594.qtwebengine")
-    widget.selectComponent("qt.594.qtwebengine.clang_64")
-    // widget.selectComponent("qt.594.src")
-    widget.selectComponent("qt.tools.qtcreator")
+    widget.selectAll();
+    widget.deselectComponent('qt.594.src')
 
     gui.clickButton(buttons.NextButton);
 }
