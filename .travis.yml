@@ -170,6 +170,10 @@ install:
 
   - git clone --recursive --branch ${PYSIDE_BRANCH} https://code.qt.io/pyside/pyside-setup.git pyside-setup
 
+  # https://bugreports.qt.io/browse/PYSIDE-603
+  # https://codereview.qt-project.org/#/c/218903/
+  - if [ "$PYSIDE_BRANCH" == "5.6" ]; then cd pyside-setup && git fetch https://codereview.qt-project.org/pyside/pyside-setup refs/changes/03/218903/2 && git checkout FETCH_HEAD && cd .. ; fi
+
 
 before_script:
   # Show which commit is being used
@@ -188,7 +192,9 @@ before_script:
 
 
 script:
-  - ${CI_PY} pyside-setup/setup.py bdist_wheel --ignore-git --standalone --no-examples --qmake=${CI_QMAKE} --cmake=${CI_CMAKE} --jobs=3
+  - if [ "$PYSIDE_BRANCH" == "5.6" ]; then ${CI_PY} pyside-setup/setup.py bdist_wheel --ignore-git --standalone --no-examples --qmake=${CI_QMAKE} --cmake=${CI_CMAKE} --osx-deployment-target=MACOSX_DEPLOYMENT_TARGET --jobs=3 ; fi
+  - if [ "$PYSIDE_BRANCH" == "5.9" ]; then ${CI_PY} pyside-setup/setup.py bdist_wheel --ignore-git --standalone --no-examples --qmake=${CI_QMAKE} --cmake=${CI_CMAKE} --jobs=3 ; fi
+  # - ${CI_PY} pyside-setup/setup.py bdist_wheel --ignore-git --standalone --no-examples --qmake=${CI_QMAKE} --cmake=${CI_CMAKE} --jobs=3
   - ls -alh pyside-setup/dist
 
 
