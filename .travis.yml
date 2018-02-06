@@ -192,7 +192,7 @@ before_script:
 
 
 script:
-  - if [ "$PYSIDE_BRANCH" == "5.6" ]; then ${CI_PY} pyside-setup/setup.py bdist_wheel --ignore-git --standalone --no-examples --qmake=${CI_QMAKE} --cmake=${CI_CMAKE} --osx-deployment-target=MACOSX_DEPLOYMENT_TARGET --jobs=3 ; fi
+  - if [ "$PYSIDE_BRANCH" == "5.6" ]; then ${CI_PY} pyside-setup/setup.py bdist_wheel --ignore-git --standalone --no-examples --qmake=${CI_QMAKE} --cmake=${CI_CMAKE} --osx-deployment-target=${MACOSX_DEPLOYMENT_TARGET} --jobs=3 ; fi
   - if [ "$PYSIDE_BRANCH" == "5.9" ]; then ${CI_PY} pyside-setup/setup.py bdist_wheel --ignore-git --standalone --no-examples --qmake=${CI_QMAKE} --cmake=${CI_CMAKE} --jobs=3 ; fi
   # - ${CI_PY} pyside-setup/setup.py bdist_wheel --ignore-git --standalone --no-examples --qmake=${CI_QMAKE} --cmake=${CI_CMAKE} --jobs=3
   - ls -alh pyside-setup/dist
