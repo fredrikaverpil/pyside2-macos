@@ -14,7 +14,7 @@ matrix:
       # - MACOSX_DEPLOYMENT_TARGET=10.7
       - CI_DEPLOY_TARGET=10.7
     os: osx
-    osx_image: xcode6.4
+    osx_image: xcode8.3
     language: generic
     # cache:
     #   timeout: 2000
@@ -34,7 +34,7 @@ matrix:
       # - MACOSX_DEPLOYMENT_TARGET=10.7
       - CI_DEPLOY_TARGET=10.7
     os: osx
-    osx_image: xcode6.4
+    osx_image: xcode8.3
     language: generic
     # cache:
     #   timeout: 2000
@@ -54,7 +54,7 @@ matrix:
       # - MACOSX_DEPLOYMENT_TARGET=10.7
       - CI_DEPLOY_TARGET=10.7
     os: osx
-    osx_image: xcode6.4
+    osx_image: xcode8.3
     language: generic
     # cache:
     #   timeout: 2000
