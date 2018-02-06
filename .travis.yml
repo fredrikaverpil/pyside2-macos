@@ -176,10 +176,6 @@ install:
 
   - git clone --recursive --branch ${PYSIDE_BRANCH} https://code.qt.io/pyside/pyside-setup.git pyside-setup
 
-  # https://bugreports.qt.io/browse/PYSIDE-603
-  # https://codereview.qt-project.org/#/c/218903/
-  - if [ "$PYSIDE_BRANCH" == "5.6" ]; then cd pyside-setup && git fetch https://codereview.qt-project.org/pyside/pyside-setup refs/changes/03/218903/2 && git checkout FETCH_HEAD && cd .. ; fi
-
 
 before_script:
   # Show which commit is being used
