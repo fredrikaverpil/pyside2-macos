@@ -9,14 +9,17 @@ matrix:
       - NAME="Python 2.7, Qt 5.6"
       - PYSIDE_BRANCH=5.6
       - QT_VER=5.6.3
-      - BREW_PY="python"
+      - PY_VER=2.7.13
+      - PY_URL_PART=https://www.python.org/ftp/python/${PY_VER}
+      - PY_FILENAME=python-${PY_VER}-macosx10.6.pkg
       - CI_PY=/usr/local/bin/python2
       - CI_CMAKE=/usr/local/bin/cmake
       - CI_QMAKE=${HOME}/Qt-${QT_VER}/${QT_VER}/clang_64/bin/qmake
       - QT_INSTALLER_FILE=qt-opensource-mac-x64-clang-${QT_VER}
       - QT_INSTALL_PATH=${HOME}/Qt-${QT_VER}
+      - CI_DEPLOY_TARGET=10.7
     os: osx
-    osx_image: xcode6.4
+    osx_image: xcode8.3
     language: generic
     # cache:
     #   timeout: 2000
@@ -27,14 +30,17 @@ matrix:
       - NAME="Python 3.5, Qt 5.6"
       - PYSIDE_BRANCH=5.6
       - QT_VER=5.6.3
-      - BREW_PY=https://raw.githubusercontent.com/Homebrew/homebrew-core/ec545d45d4512ace3570782283df4ecda6bb0044/Formula/python3.rb
+      - PY_VER=3.5.4
+      - PY_URL_PART=https://www.python.org/ftp/python/${PY_VER}
+      - PY_FILENAME=python-${PY_VER}-macosx10.6.pkg
       - CI_PY=/usr/local/bin/python3
       - CI_CMAKE=/usr/local/bin/cmake
       - CI_QMAKE=${HOME}/Qt-${QT_VER}/${QT_VER}/clang_64/bin/qmake
       - QT_INSTALLER_FILE=qt-opensource-mac-x64-clang-${QT_VER}
       - QT_INSTALL_PATH=${HOME}/Qt-${QT_VER}
+      - CI_DEPLOY_TARGET=10.7
     os: osx
-    osx_image: xcode6.4
+    osx_image: xcode8.3
     language: generic
     # cache:
     #   timeout: 2000
@@ -45,14 +51,17 @@ matrix:
       - NAME="Python 3.6, Qt 5.6"
       - PYSIDE_BRANCH=5.6
       - QT_VER=5.6.3
-      - BREW_PY=https://raw.githubusercontent.com/Homebrew/homebrew-core/master/Formula/python3.rb
+      - PY_VER=3.6.4
+      - PY_URL_PART=https://www.python.org/ftp/python/${PY_VER}
+      - PY_FILENAME=python-${PY_VER}-macosx10.6.pkg
       - CI_PY=/usr/local/bin/python3
       - CI_CMAKE=/usr/local/bin/cmake
       - CI_QMAKE=${HOME}/Qt-${QT_VER}/${QT_VER}/clang_64/bin/qmake
       - QT_INSTALLER_FILE=qt-opensource-mac-x64-clang-${QT_VER}
       - QT_INSTALL_PATH=${HOME}/Qt-${QT_VER}
+      - CI_DEPLOY_TARGET=10.7
     os: osx
-    osx_image: xcode6.4
+    osx_image: xcode8.3
     language: generic
     # cache:
     #   timeout: 2000
@@ -62,14 +71,17 @@ matrix:
   - env:
       - NAME="Python 2.7, Qt 5.9"
       - PYSIDE_BRANCH=5.9
-      - QT_VER=5.9.3
-      - BREW_PY=""
+      - QT_VER=5.9.4
+      - PY_VER=2.7.13
+      - PY_URL_PART=https://www.python.org/ftp/python/${PY_VER}
+      - PY_FILENAME=python-${PY_VER}-macosx10.6.pkg
       - CI_PY=/usr/local/bin/python2
       - CI_CMAKE=/usr/local/bin/cmake
       - CI_QMAKE=${HOME}/Qt-${QT_VER}/${QT_VER}/clang_64/bin/qmake
       - LIBCLANG_FILE=libclang-release_50-mac.7z
       - QT_INSTALLER_FILE=qt-opensource-mac-x64-${QT_VER}
       - QT_INSTALL_PATH=${HOME}/Qt-${QT_VER}
+      - CI_DEPLOY_TARGET=10.10
     os: osx
     osx_image: xcode8.3
     language: generic
@@ -81,14 +93,17 @@ matrix:
   - env:
       - NAME="Python 3.5, Qt 5.9"
       - PYSIDE_BRANCH=5.9
-      - QT_VER=5.9.3
-      - BREW_PY=https://raw.githubusercontent.com/Homebrew/homebrew-core/ec545d45d4512ace3570782283df4ecda6bb0044/Formula/python3.rb
+      - QT_VER=5.9.4
+      - PY_VER=3.5.4
+      - PY_URL_PART=https://www.python.org/ftp/python/${PY_VER}
+      - PY_FILENAME=python-${PY_VER}-macosx10.6.pkg
       - CI_PY=/usr/local/bin/python3
       - CI_CMAKE=/usr/local/bin/cmake
       - CI_QMAKE=${HOME}/Qt-${QT_VER}/${QT_VER}/clang_64/bin/qmake
       - LIBCLANG_FILE=libclang-release_50-mac.7z
       - QT_INSTALLER_FILE=qt-opensource-mac-x64-${QT_VER}
       - QT_INSTALL_PATH=${HOME}/Qt-${QT_VER}
+      - CI_DEPLOY_TARGET=10.10
     os: osx
     osx_image: xcode8.3
     language: generic
@@ -100,14 +115,17 @@ matrix:
   - env:
       - NAME="Python 3.6, Qt 5.9"
       - PYSIDE_BRANCH=5.9
-      - QT_VER=5.9.3
-      - BREW_PY=https://raw.githubusercontent.com/Homebrew/homebrew-core/master/Formula/python3.rb
+      - QT_VER=5.9.4
+      - PY_VER=3.6.4
+      - PY_URL_PART=https://www.python.org/ftp/python/${PY_VER}
+      - PY_FILENAME=python-${PY_VER}-macosx10.6.pkg
       - CI_PY=/usr/local/bin/python3
       - CI_CMAKE=/usr/local/bin/cmake
       - CI_QMAKE=${HOME}/Qt-${QT_VER}/${QT_VER}/clang_64/bin/qmake
       - LIBCLANG_FILE=libclang-release_50-mac.7z
       - QT_INSTALLER_FILE=qt-opensource-mac-x64-${QT_VER}
       - QT_INSTALL_PATH=${HOME}/Qt-${QT_VER}
+      - CI_DEPLOY_TARGET=10.10
     os: osx
     osx_image: xcode8.3
     language: generic
@@ -128,10 +146,12 @@ before_install:
 
 install:
   # Fix issue on xcode6.4: https://github.com/Homebrew/brew/issues/3299#issuecomment-335837083
-  - brew update
+  # - brew update
 
   # Python
-  - if [ "$BREW_PY" != "" ]; then brew install ${BREW_PY} ; fi
+  - curl -L -O ${PY_URL_PART}/${PY_FILENAME}
+  - sudo installer -pkg ${PY_FILENAME} -target /
+  - ls -alh /usr/local/bin
 
   # pip
   - ${CI_PY} -m pip install --user --upgrade pip setuptools wheel
@@ -186,20 +206,21 @@ before_script:
 
 
 script:
-  - ${CI_PY} pyside-setup/setup.py bdist_wheel --ignore-git --standalone --no-examples --qmake=${CI_QMAKE} --cmake=${CI_CMAKE} --jobs=3
-  - ls -alh pyside-setup/dist
+  - ${CI_PY} pyside-setup/setup.py bdist_wheel --ignore-git --standalone --no-examples --osx-use-libc++ --qmake=${CI_QMAKE} --cmake=${CI_CMAKE} --osx-deployment-target=${CI_DEPLOY_TARGET} --jobs=3
 
 
 # before_cache:
 #   - echo "About to perform caching of Qt installation dir..."
 
 
-# after_success:
-#   - ls -alh
+after_success:
+  - ls -alh
+  - ls -alh pyside-setup/dist
 
 
-# after_failure:
-#   - ls -alh
+after_failure:
+  - ls -alh
+  - ls -alh pyside-setup/dist
 
 
 # before_deploy:
