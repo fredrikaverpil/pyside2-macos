@@ -130,6 +130,74 @@ matrix:
     #   directories:
     #     - ${QT_INSTALL_PATH}
 
+  - env:
+      - NAME="Python 2.7, Qt 5.10"
+      - PYSIDE_BRANCH=5.9
+      - QT_VER_SHORT=5.10
+      - QT_VER=5.10.1
+      - PY_VER=2.7.13
+      - PY_URL_PART=https://www.python.org/ftp/python/${PY_VER}
+      - PY_FILENAME=python-${PY_VER}-macosx10.6.pkg
+      - CI_PY=/usr/local/bin/python2
+      - CI_CMAKE=/usr/local/bin/cmake
+      - CI_QMAKE=${HOME}/Qt-${QT_VER}/${QT_VER}/clang_64/bin/qmake
+      - LIBCLANG_FILE=libclang-release_50-mac.7z
+      - QT_INSTALLER_FILE=qt-opensource-mac-x64-${QT_VER}
+      - QT_INSTALL_PATH=${HOME}/Qt-${QT_VER}
+      - CI_DEPLOY_TARGET=10.10
+    os: osx
+    osx_image: xcode8.3
+    language: generic
+    # cache:
+    #   timeout: 2000
+    #   directories:
+    #     - ${QT_INSTALL_PATH}
+
+  - env:
+      - NAME="Python 3.5, Qt 5.10"
+      - PYSIDE_BRANCH=5.9
+      - QT_VER_SHORT=5.10
+      - QT_VER=5.10.1
+      - PY_VER=3.5.4
+      - PY_URL_PART=https://www.python.org/ftp/python/${PY_VER}
+      - PY_FILENAME=python-${PY_VER}-macosx10.6.pkg
+      - CI_PY=/usr/local/bin/python3
+      - CI_CMAKE=/usr/local/bin/cmake
+      - CI_QMAKE=${HOME}/Qt-${QT_VER}/${QT_VER}/clang_64/bin/qmake
+      - LIBCLANG_FILE=libclang-release_50-mac.7z
+      - QT_INSTALLER_FILE=qt-opensource-mac-x64-${QT_VER}
+      - QT_INSTALL_PATH=${HOME}/Qt-${QT_VER}
+      - CI_DEPLOY_TARGET=10.10
+    os: osx
+    osx_image: xcode8.3
+    language: generic
+    # cache:
+    #   timeout: 2000
+    #   directories:
+    #     - ${QT_INSTALL_PATH}
+
+  - env:
+      - NAME="Python 3.6, Qt 5.10"
+      - PYSIDE_BRANCH=5.9
+      - QT_VER_SHORT=5.10
+      - QT_VER=5.10.1
+      - PY_VER=3.6.4
+      - PY_URL_PART=https://www.python.org/ftp/python/${PY_VER}
+      - PY_FILENAME=python-${PY_VER}-macosx10.6.pkg
+      - CI_PY=/usr/local/bin/python3
+      - CI_CMAKE=/usr/local/bin/cmake
+      - CI_QMAKE=${HOME}/Qt-${QT_VER}/${QT_VER}/clang_64/bin/qmake
+      - LIBCLANG_FILE=libclang-release_50-mac.7z
+      - QT_INSTALLER_FILE=qt-opensource-mac-x64-${QT_VER}
+      - QT_INSTALL_PATH=${HOME}/Qt-${QT_VER}
+      - CI_DEPLOY_TARGET=10.10
+    os: osx
+    osx_image: xcode8.3
+    language: generic
+    # cache:
+    #   timeout: 2000
+    #   directories:
+    #     - ${QT_INSTALL_PATH}
 
 before_install:
   - pwd
