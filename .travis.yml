@@ -144,7 +144,7 @@ matrix:
       - PY_VER=2.7.13
       - PY_URL_PART=https://www.python.org/ftp/python/${PY_VER}
       - PY_FILENAME=python-${PY_VER}-macosx10.6.pkg
-      - CI_PY=/usr/local/bin/python3
+      - CI_PY=/usr/local/bin/python2
       - CI_CMAKE=/usr/local/bin/cmake
       - CI_QMAKE=${HOME}/Qt-${QT_VER}/${QT_VER}/clang_64/bin/qmake
       - LIBCLANG_FILE=libclang-release_50-mac.7z
