@@ -138,13 +138,13 @@ matrix:
 
   - env:
       - NAME="Python 2.7, Qt 5.10"
-      - PYSIDE_BRANCH=5.9
+      - PYSIDE_BRANCH=dev
       - QT_VER_SHORT=5.10
       - QT_VER=5.10.1
       - PY_VER=2.7.13
       - PY_URL_PART=https://www.python.org/ftp/python/${PY_VER}
       - PY_FILENAME=python-${PY_VER}-macosx10.6.pkg
-      - CI_PY=/usr/local/bin/python2
+      - CI_PY=/usr/local/bin/python3
       - CI_CMAKE=/usr/local/bin/cmake
       - CI_QMAKE=${HOME}/Qt-${QT_VER}/${QT_VER}/clang_64/bin/qmake
       - LIBCLANG_FILE=libclang-release_50-mac.7z
@@ -161,7 +161,7 @@ matrix:
 
   - env:
       - NAME="Python 3.5, Qt 5.10"
-      - PYSIDE_BRANCH=5.9
+      - PYSIDE_BRANCH=dev
       - QT_VER_SHORT=5.10
       - QT_VER=5.10.1
       - PY_VER=3.5.4
@@ -184,7 +184,7 @@ matrix:
 
   - env:
       - NAME="Python 3.6, Qt 5.10"
-      - PYSIDE_BRANCH=5.9
+      - PYSIDE_BRANCH=dev
       - QT_VER_SHORT=5.10
       - QT_VER=5.10.1
       - PY_VER=3.6.4
@@ -204,6 +204,7 @@ matrix:
     #   timeout: 2000
     #   directories:
     #     - ${QT_INSTALL_PATH}
+
 
 before_install:
   - pwd
@@ -247,10 +248,10 @@ install:
   - ls -alh ${QT_INSTALL_PATH}/${QT_VER}/clang_64/bin
 
   # libclang
-  - if [ "$PYSIDE_BRANCH" == "5.9" ]; then curl -L -O http://download.qt.io/development_releases/prebuilt/libclang/${LIBCLANG_FILE} ; fi
-  - if [ "$PYSIDE_BRANCH" == "5.9" ]; then 7z x ${LIBCLANG_FILE} ; fi
-  - if [ "$PYSIDE_BRANCH" == "5.9" ]; then export CLANG_INSTALL_DIR=$(pwd)/libclang ; fi
-  - if [ "$PYSIDE_BRANCH" == "5.9" ]; then rm -rf ${LIBCLANG_FILE} ; fi
+  - if [ "$PYSIDE_BRANCH" != "5.6" ]; then curl -L -O http://download.qt.io/development_releases/prebuilt/libclang/${LIBCLANG_FILE} ; fi
+  - if [ "$PYSIDE_BRANCH" != "5.6" ]; then 7z x ${LIBCLANG_FILE} ; fi
+  - if [ "$PYSIDE_BRANCH" != "5.6" ]; then export CLANG_INSTALL_DIR=$(pwd)/libclang ; fi
+  - if [ "$PYSIDE_BRANCH" != "5.6" ]; then rm -rf ${LIBCLANG_FILE} ; fi
 
 
   # CMake 3.x already provided by Travis CI
@@ -274,7 +275,7 @@ before_script:
   - df -h
   - ls /usr/local/Cellar
 
-  # Try patch https://codereview.qt-project.org/#/c/220898/
+    # Try patch https://codereview.qt-project.org/#/c/220898/
   - if [ "$PYSIDE_BRANCH" == "5.6" ]; then cd pyside-setup && git fetch https://codereview.qt-project.org/pyside/pyside-setup refs/changes/98/220898/1 && git checkout FETCH_HEAD && cd .. ; fi
 
 script:
