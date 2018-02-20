@@ -4,6 +4,7 @@ matrix:
   - env:
       - NAME="Python 2.7, Qt 5.6"
       - PYSIDE_BRANCH=5.6
+      - QT_VER_SHORT=5.6
       - QT_VER=5.6.3
       - PY_VER=2.7.13
       - PY_URL_PART=https://www.python.org/ftp/python/${PY_VER}
@@ -25,6 +26,7 @@ matrix:
   - env:
       - NAME="Python 3.5, Qt 5.6"
       - PYSIDE_BRANCH=5.6
+      - QT_VER_SHORT=5.6
       - QT_VER=5.6.3
       - PY_VER=3.5.4
       - PY_URL_PART=https://www.python.org/ftp/python/${PY_VER}
@@ -46,6 +48,7 @@ matrix:
   - env:
       - NAME="Python 3.6, Qt 5.6"
       - PYSIDE_BRANCH=5.6
+      - QT_VER_SHORT=5.6
       - QT_VER=5.6.3
       - PY_VER=3.6.4
       - PY_URL_PART=https://www.python.org/ftp/python/${PY_VER}
@@ -67,6 +70,7 @@ matrix:
   - env:
       - NAME="Python 2.7, Qt 5.9"
       - PYSIDE_BRANCH=5.9
+      - QT_VER_SHORT=5.9
       - QT_VER=5.9.4
       - PY_VER=2.7.13
       - PY_URL_PART=https://www.python.org/ftp/python/${PY_VER}
@@ -89,6 +93,7 @@ matrix:
   - env:
       - NAME="Python 3.5, Qt 5.9"
       - PYSIDE_BRANCH=5.9
+      - QT_VER_SHORT=5.9
       - QT_VER=5.9.4
       - PY_VER=3.5.4
       - PY_URL_PART=https://www.python.org/ftp/python/${PY_VER}
@@ -111,6 +116,7 @@ matrix:
   - env:
       - NAME="Python 3.6, Qt 5.9"
       - PYSIDE_BRANCH=5.9
+      - QT_VER_SHORT=5.9
       - QT_VER=5.9.4
       - PY_VER=3.6.4
       - PY_URL_PART=https://www.python.org/ftp/python/${PY_VER}
@@ -227,7 +233,7 @@ install:
   - brew install tree p7zip
 
   # Qt
-  - if [ ! -d "${QT_INSTALL_PATH}" ] ; then curl -L -O https://download.qt.io/archive/qt/${PYSIDE_BRANCH}/${QT_VER}/${QT_INSTALLER_FILE}.dmg ; fi
+  - if [ ! -d "${QT_INSTALL_PATH}" ] ; then curl -L -O https://download.qt.io/archive/qt/${QT_VER_SHORT}/${QT_VER}/${QT_INSTALLER_FILE}.dmg ; fi
   - if [ ! -d "${QT_INSTALL_PATH}" ] ; then hdiutil attach -noverify ${QT_INSTALLER_FILE}.dmg ; fi
   - if [ ! -d "${QT_INSTALL_PATH}" ] ; then travis_wait 20 /Volumes/${QT_INSTALLER_FILE}/${QT_INSTALLER_FILE}.app/Contents/MacOS/${QT_INSTALLER_FILE} --script qt-installer-${QT_VER}-noninteractive.qs -platform minimal ; fi
   - if [ -d "/Volumes/${QT_INSTALLER_FILE}" ] ; then hdiutil detach /Volumes/${QT_INSTALLER_FILE} ; fi
