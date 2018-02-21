@@ -138,7 +138,7 @@ matrix:
 
   - env:
       - NAME="Python 2.7, Qt 5.10"
-      - PYSIDE_BRANCH=dev
+      - PYSIDE_BRANCH=5.9
       - QT_VER_SHORT=5.10
       - QT_VER=5.10.1
       - PY_VER=2.7.13
@@ -161,7 +161,7 @@ matrix:
 
   - env:
       - NAME="Python 3.5, Qt 5.10"
-      - PYSIDE_BRANCH=dev
+      - PYSIDE_BRANCH=5.9
       - QT_VER_SHORT=5.10
       - QT_VER=5.10.1
       - PY_VER=3.5.4
@@ -184,7 +184,7 @@ matrix:
 
   - env:
       - NAME="Python 3.6, Qt 5.10"
-      - PYSIDE_BRANCH=dev
+      - PYSIDE_BRANCH=5.9
       - QT_VER_SHORT=5.10
       - QT_VER=5.10.1
       - PY_VER=3.6.4
