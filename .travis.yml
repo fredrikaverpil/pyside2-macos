@@ -259,6 +259,9 @@ install:
 
   - git clone --recursive --branch ${PYSIDE_BRANCH} https://code.qt.io/pyside/pyside-setup.git pyside-setup
 
+    # Try patch https://codereview.qt-project.org/#/c/220898/
+  - if [ "$PYSIDE_BRANCH" == "5.6" ]; then cd pyside-setup && git fetch https://codereview.qt-project.org/pyside/pyside-setup refs/changes/98/220898/3 && git checkout FETCH_HEAD && cd .. ; fi
+
 
 before_script:
   # Show which commit is being used
@@ -275,8 +278,6 @@ before_script:
   - df -h
   - ls /usr/local/Cellar
 
-    # Try patch https://codereview.qt-project.org/#/c/220898/
-  - if [ "$PYSIDE_BRANCH" == "5.6" ]; then cd pyside-setup && git fetch https://codereview.qt-project.org/pyside/pyside-setup refs/changes/98/220898/1 && git checkout FETCH_HEAD && cd .. ; fi
 
 script:
   - ${CI_PY} pyside-setup/setup.py bdist_wheel --ignore-git --standalone --no-examples --osx-use-libc++ --qmake=${CI_QMAKE} --cmake=${CI_CMAKE} --osx-deployment-target=${CI_DEPLOY_TARGET} --jobs=3
