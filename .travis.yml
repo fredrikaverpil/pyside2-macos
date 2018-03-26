@@ -78,7 +78,7 @@ matrix:
       - CI_PY=/usr/local/bin/python2
       - CI_CMAKE=/usr/local/bin/cmake
       - CI_QMAKE=${HOME}/Qt-${QT_VER}/${QT_VER}/clang_64/bin/qmake
-      - LIBCLANG_FILE=libclang-release_50-mac.7z
+      - LIBCLANG_FILE=libclang-release_50-mac-clazy.7z
       - QT_INSTALLER_FILE=qt-opensource-mac-x64-${QT_VER}
       - QT_INSTALL_PATH=${HOME}/Qt-${QT_VER}
       - CI_DEPLOY_TARGET=10.10
@@ -101,7 +101,7 @@ matrix:
       - CI_PY=/usr/local/bin/python3
       - CI_CMAKE=/usr/local/bin/cmake
       - CI_QMAKE=${HOME}/Qt-${QT_VER}/${QT_VER}/clang_64/bin/qmake
-      - LIBCLANG_FILE=libclang-release_50-mac.7z
+      - LIBCLANG_FILE=libclang-release_50-mac-clazy.7z
       - QT_INSTALLER_FILE=qt-opensource-mac-x64-${QT_VER}
       - QT_INSTALL_PATH=${HOME}/Qt-${QT_VER}
       - CI_DEPLOY_TARGET=10.10
@@ -124,7 +124,7 @@ matrix:
       - CI_PY=/usr/local/bin/python3
       - CI_CMAKE=/usr/local/bin/cmake
       - CI_QMAKE=${HOME}/Qt-${QT_VER}/${QT_VER}/clang_64/bin/qmake
-      - LIBCLANG_FILE=libclang-release_50-mac.7z
+      - LIBCLANG_FILE=libclang-release_50-mac-clazy.7z
       - QT_INSTALLER_FILE=qt-opensource-mac-x64-${QT_VER}
       - QT_INSTALL_PATH=${HOME}/Qt-${QT_VER}
       - CI_DEPLOY_TARGET=10.10
@@ -147,7 +147,7 @@ matrix:
       - CI_PY=/usr/local/bin/python2
       - CI_CMAKE=/usr/local/bin/cmake
       - CI_QMAKE=${HOME}/Qt-${QT_VER}/${QT_VER}/clang_64/bin/qmake
-      - LIBCLANG_FILE=libclang-release_50-mac.7z
+      - LIBCLANG_FILE=libclang-release_50-mac-clazy.7z
       - QT_INSTALLER_FILE=qt-opensource-mac-x64-${QT_VER}
       - QT_INSTALL_PATH=${HOME}/Qt-${QT_VER}
       - CI_DEPLOY_TARGET=10.10
@@ -170,7 +170,7 @@ matrix:
       - CI_PY=/usr/local/bin/python3
       - CI_CMAKE=/usr/local/bin/cmake
       - CI_QMAKE=${HOME}/Qt-${QT_VER}/${QT_VER}/clang_64/bin/qmake
-      - LIBCLANG_FILE=libclang-release_50-mac.7z
+      - LIBCLANG_FILE=libclang-release_50-mac-clazy.7z
       - QT_INSTALLER_FILE=qt-opensource-mac-x64-${QT_VER}
       - QT_INSTALL_PATH=${HOME}/Qt-${QT_VER}
       - CI_DEPLOY_TARGET=10.10
@@ -193,7 +193,7 @@ matrix:
       - CI_PY=/usr/local/bin/python3
       - CI_CMAKE=/usr/local/bin/cmake
       - CI_QMAKE=${HOME}/Qt-${QT_VER}/${QT_VER}/clang_64/bin/qmake
-      - LIBCLANG_FILE=libclang-release_50-mac.7z
+      - LIBCLANG_FILE=libclang-release_50-mac-clazy.7z
       - QT_INSTALLER_FILE=qt-opensource-mac-x64-${QT_VER}
       - QT_INSTALL_PATH=${HOME}/Qt-${QT_VER}
       - CI_DEPLOY_TARGET=10.10
@@ -258,7 +258,7 @@ install:
   # - brew install cmake
 
   - git clone --recursive --branch ${PYSIDE_BRANCH} https://code.qt.io/pyside/pyside-setup.git pyside-setup
-  
+
 
 before_script:
   # Show which commit is being used
