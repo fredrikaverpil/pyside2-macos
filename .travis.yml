@@ -267,6 +267,7 @@ before_script:
 
   # Summary
   - ${CI_PY} --version
+  - ${CI_PY} -m pip --version
   - ${CI_CMAKE} --version
   - ${CI_QMAKE} --version
   - git --version
