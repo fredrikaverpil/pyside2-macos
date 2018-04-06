@@ -225,6 +225,8 @@ install:
   - ls -alh /usr/local/bin
 
   # pip
+  - ${CI_PY} --version
+  - ${CI_PY} -m pip --version
   - ${CI_PY} -m pip install --user --upgrade pip
   - ${CI_PY} -m pip install --user --upgrade setuptools wheel
 
