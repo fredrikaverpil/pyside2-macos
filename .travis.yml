@@ -29,7 +29,7 @@ matrix:
       - PYSIDE_BRANCH=5.6
       - QT_VER_SHORT=5.6
       - QT_VER=5.6.3
-      - PY_VER=3.5.5
+      - PY_VER=3.5.4
       - PY_URL_PART=https://www.python.org/ftp/python/${PY_VER}
       - PY_FILENAME=python-${PY_VER}-macosx10.6.pkg
       - CI_PY=/usr/local/bin/python3
@@ -99,7 +99,7 @@ matrix:
       - PYSIDE_BRANCH=5.9
       - QT_VER_SHORT=5.9
       - QT_VER=5.9.4
-      - PY_VER=3.5.5
+      - PY_VER=3.5.4
       - PY_URL_PART=https://www.python.org/ftp/python/${PY_VER}
       - PY_FILENAME=python-${PY_VER}-macosx10.6.pkg
       - CI_PY=/usr/local/bin/python3
@@ -171,7 +171,7 @@ matrix:
       - PYSIDE_BRANCH=5.9
       - QT_VER_SHORT=5.10
       - QT_VER=5.10.1
-      - PY_VER=3.5.5
+      - PY_VER=3.5.4
       - PY_URL_PART=https://www.python.org/ftp/python/${PY_VER}
       - PY_FILENAME=python-${PY_VER}-macosx10.6.pkg
       - CI_PY=/usr/local/bin/python3
