@@ -10,6 +10,7 @@ matrix:
       - PY_URL_PART=https://www.python.org/ftp/python/${PY_VER}
       - PY_FILENAME=python-${PY_VER}-macosx10.6.pkg
       - CI_PY=/usr/local/bin/python2
+      - CI_PIP=/usr/local/bin/pip2
       - CI_CMAKE=/usr/local/bin/cmake
       - CI_QMAKE=${HOME}/Qt-${QT_VER}/${QT_VER}/clang_64/bin/qmake
       - QT_INSTALLER_FILE=qt-opensource-mac-x64-clang-${QT_VER}
@@ -32,6 +33,7 @@ matrix:
       - PY_URL_PART=https://www.python.org/ftp/python/${PY_VER}
       - PY_FILENAME=python-${PY_VER}-macosx10.6.pkg
       - CI_PY=/usr/local/bin/python3
+      - CI_PIP=/usr/local/bin/pip3
       - CI_CMAKE=/usr/local/bin/cmake
       - CI_QMAKE=${HOME}/Qt-${QT_VER}/${QT_VER}/clang_64/bin/qmake
       - QT_INSTALLER_FILE=qt-opensource-mac-x64-clang-${QT_VER}
@@ -54,6 +56,7 @@ matrix:
       - PY_URL_PART=https://www.python.org/ftp/python/${PY_VER}
       - PY_FILENAME=python-${PY_VER}-macosx10.6.pkg
       - CI_PY=/usr/local/bin/python3
+      - CI_PIP=/usr/local/bin/pip3
       - CI_CMAKE=/usr/local/bin/cmake
       - CI_QMAKE=${HOME}/Qt-${QT_VER}/${QT_VER}/clang_64/bin/qmake
       - QT_INSTALLER_FILE=qt-opensource-mac-x64-clang-${QT_VER}
@@ -76,6 +79,7 @@ matrix:
       - PY_URL_PART=https://www.python.org/ftp/python/${PY_VER}
       - PY_FILENAME=python-${PY_VER}-macosx10.6.pkg
       - CI_PY=/usr/local/bin/python2
+      - CI_PIP=/usr/local/bin/pip2
       - CI_CMAKE=/usr/local/bin/cmake
       - CI_QMAKE=${HOME}/Qt-${QT_VER}/${QT_VER}/clang_64/bin/qmake
       - LIBCLANG_FILE=libclang-release_50-mac-clazy.7z
@@ -99,6 +103,7 @@ matrix:
       - PY_URL_PART=https://www.python.org/ftp/python/${PY_VER}
       - PY_FILENAME=python-${PY_VER}-macosx10.6.pkg
       - CI_PY=/usr/local/bin/python3
+      - CI_PIP=/usr/local/bin/pip3
       - CI_CMAKE=/usr/local/bin/cmake
       - CI_QMAKE=${HOME}/Qt-${QT_VER}/${QT_VER}/clang_64/bin/qmake
       - LIBCLANG_FILE=libclang-release_50-mac-clazy.7z
@@ -122,6 +127,7 @@ matrix:
       - PY_URL_PART=https://www.python.org/ftp/python/${PY_VER}
       - PY_FILENAME=python-${PY_VER}-macosx10.6.pkg
       - CI_PY=/usr/local/bin/python3
+      - CI_PIP=/usr/local/bin/pip3
       - CI_CMAKE=/usr/local/bin/cmake
       - CI_QMAKE=${HOME}/Qt-${QT_VER}/${QT_VER}/clang_64/bin/qmake
       - LIBCLANG_FILE=libclang-release_50-mac-clazy.7z
@@ -145,6 +151,7 @@ matrix:
       - PY_URL_PART=https://www.python.org/ftp/python/${PY_VER}
       - PY_FILENAME=python-${PY_VER}-macosx10.6.pkg
       - CI_PY=/usr/local/bin/python2
+      - CI_PIP=/usr/local/bin/pip2
       - CI_CMAKE=/usr/local/bin/cmake
       - CI_QMAKE=${HOME}/Qt-${QT_VER}/${QT_VER}/clang_64/bin/qmake
       - LIBCLANG_FILE=libclang-release_50-mac-clazy.7z
@@ -168,6 +175,7 @@ matrix:
       - PY_URL_PART=https://www.python.org/ftp/python/${PY_VER}
       - PY_FILENAME=python-${PY_VER}-macosx10.6.pkg
       - CI_PY=/usr/local/bin/python3
+      - CI_PIP=/usr/local/bin/pip3
       - CI_CMAKE=/usr/local/bin/cmake
       - CI_QMAKE=${HOME}/Qt-${QT_VER}/${QT_VER}/clang_64/bin/qmake
       - LIBCLANG_FILE=libclang-release_50-mac-clazy.7z
@@ -191,6 +199,7 @@ matrix:
       - PY_URL_PART=https://www.python.org/ftp/python/${PY_VER}
       - PY_FILENAME=python-${PY_VER}-macosx10.6.pkg
       - CI_PY=/usr/local/bin/python3
+      - CI_PIP=/usr/local/bin/pip3
       - CI_CMAKE=/usr/local/bin/cmake
       - CI_QMAKE=${HOME}/Qt-${QT_VER}/${QT_VER}/clang_64/bin/qmake
       - LIBCLANG_FILE=libclang-release_50-mac-clazy.7z
@@ -226,9 +235,9 @@ install:
 
   # pip
   - ${CI_PY} --version
-  - ${CI_PY} -m pip --version
-  - ${CI_PY} -m pip install --user --upgrade pip
-  - ${CI_PY} -m pip install --user --upgrade setuptools wheel
+  - ${CI_PIP} --version
+  - ${CI_PIP} install --upgrade pip
+  - ${CI_PIP} install --upgrade setuptools wheel
 
   # lxml
   - brew install libxslt libxml2
@@ -269,7 +278,7 @@ before_script:
 
   # Summary
   - ${CI_PY} --version
-  - ${CI_PY} -m pip --version
+  - ${CI_PIP} --version
   - ${CI_CMAKE} --version
   - ${CI_QMAKE} --version
   - git --version
