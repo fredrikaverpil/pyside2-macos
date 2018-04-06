@@ -2,8 +2,7 @@
 
 [![Build Status](https://travis-ci.org/fredrikaverpil/pyside2-macos.svg?branch=master)](https://travis-ci.org/fredrikaverpil/pyside2-macos)
 
-Unoffical PySide2 standalone wheels for macOS.
-
+Unoffical PySide2 standalone wheels for macOS. _**Official**_ wheels [now available](http://lists.qt-project.org/pipermail/pyside/2018-March/002537.html)!
 
 ## Sister projects
 
