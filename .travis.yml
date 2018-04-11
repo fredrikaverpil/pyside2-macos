@@ -236,8 +236,8 @@ install:
   # pip
   - ${CI_PY} --version
   - ${CI_PIP} --version
-  - ${CI_PIP} install --upgrade pip
-  - ${CI_PIP} install --upgrade setuptools wheel
+  - ${CI_PIP} install --trusted-host pypi.python.org --upgrade pip
+  - ${CI_PIP} install --trusted-host pypi.python.org --upgrade setuptools wheel
 
   # lxml
   - brew install libxslt libxml2
