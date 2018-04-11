@@ -236,7 +236,9 @@ install:
   # pip
   - ${CI_PY} --version
   - ${CI_PIP} --version
-  - ${CI_PIP} install --trusted-host pypi.python.org --upgrade pip
+  - curl -O https://bootstrap.pypa.io/get-pip.py && ${CI_PY} get-pip-py
+  - ${CI_PIP} --version
+  # - ${CI_PIP} install --trusted-host pypi.python.org --upgrade pip
   - ${CI_PIP} install --trusted-host pypi.python.org --upgrade setuptools wheel
 
   # lxml
