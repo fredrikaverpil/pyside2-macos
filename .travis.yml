@@ -52,7 +52,7 @@ matrix:
       - PYSIDE_BRANCH=5.6
       - QT_VER_SHORT=5.6
       - QT_VER=5.6.3
-      - PY_VER=3.6.4
+      - PY_VER=3.6.5
       - PY_URL_PART=https://www.python.org/ftp/python/${PY_VER}
       - PY_FILENAME=python-${PY_VER}-macosx10.6.pkg
       - CI_PY=/usr/local/bin/python3
@@ -123,7 +123,7 @@ matrix:
       - PYSIDE_BRANCH=5.9
       - QT_VER_SHORT=5.9
       - QT_VER=5.9.4
-      - PY_VER=3.6.4
+      - PY_VER=3.6.5
       - PY_URL_PART=https://www.python.org/ftp/python/${PY_VER}
       - PY_FILENAME=python-${PY_VER}-macosx10.6.pkg
       - CI_PY=/usr/local/bin/python3
@@ -195,7 +195,7 @@ matrix:
       - PYSIDE_BRANCH=5.9
       - QT_VER_SHORT=5.10
       - QT_VER=5.10.1
-      - PY_VER=3.6.4
+      - PY_VER=3.6.5
       - PY_URL_PART=https://www.python.org/ftp/python/${PY_VER}
       - PY_FILENAME=python-${PY_VER}-macosx10.6.pkg
       - CI_PY=/usr/local/bin/python3
@@ -228,6 +228,15 @@ install:
   # Fix issue on xcode6.4: https://github.com/Homebrew/brew/issues/3299#issuecomment-335837083
   # - brew update
 
+  # CMake 3.x already provided by Travis CI
+  # - brew install cmake
+
+  # lxml
+  - HOMEBREW_NO_AUTO_UPDATE=1 brew install libxslt libxml2
+
+  # 7zip
+  - HOMEBREW_NO_AUTO_UPDATE=1 brew install tree p7zip
+
   # Python
   - curl -L -O ${PY_URL_PART}/${PY_FILENAME}
   - sudo installer -pkg ${PY_FILENAME} -target /
@@ -236,14 +245,9 @@ install:
   # pip
   - ${CI_PY} --version
   - ${CI_PIP} --version
-  - ${CI_PIP} install --trusted-host pypi.python.org --upgrade pip
+  - curl https://bootstrap.pypa.io/get-pip.py | ${CI_PY}
+  - ${CI_PIP} --version
   - ${CI_PIP} install --trusted-host pypi.python.org --upgrade setuptools wheel
-
-  # lxml
-  - brew install libxslt libxml2
-
-  # 7zip
-  - brew install tree p7zip
 
   # Qt
   - if [ ! -d "${QT_INSTALL_PATH}" ] ; then curl -L -O https://download.qt.io/archive/qt/${QT_VER_SHORT}/${QT_VER}/${QT_INSTALLER_FILE}.dmg ; fi
@@ -265,10 +269,7 @@ install:
   - if [ "$PYSIDE_BRANCH" != "5.6" ]; then export CLANG_INSTALL_DIR=$(pwd)/libclang ; fi
   - if [ "$PYSIDE_BRANCH" != "5.6" ]; then rm -rf ${LIBCLANG_FILE} ; fi
 
-
-  # CMake 3.x already provided by Travis CI
-  # - brew install cmake
-
+  # Clone repo
   - git clone --recursive --branch ${PYSIDE_BRANCH} https://code.qt.io/pyside/pyside-setup.git pyside-setup
 
 
