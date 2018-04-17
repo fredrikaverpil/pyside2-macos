@@ -2,7 +2,10 @@
 
 [![Build Status](https://travis-ci.org/fredrikaverpil/pyside2-macos.svg?branch=master)](https://travis-ci.org/fredrikaverpil/pyside2-macos)
 
-Unoffical PySide2 standalone wheels for macOS. _**Official**_ wheels [now available](http://lists.qt-project.org/pipermail/pyside/2018-March/002537.html)!
+Unoffical PySide2 standalone wheels for macOS.
+
+:fire: _Official_ wheels are [now available](http://lists.qt-project.org/pipermail/pyside/2018-March/002537.html)!
+
 
 ## Sister projects
 
@@ -31,32 +34,25 @@ Job auto cancellation is enabled for this project in Travis CI, which means that
 
 ### Target deployment platform versions
 
-See Coin CI macOS platform configs marked with "Packaging" tag for:
+PySide2 for macOS should be built using the latest and greatest in terms of macOS version, Xcode version etc. A deployment target platform is then specified (e.g. `--osx-deployment-target=10.10`) to mark which minimum macOS version can use the built wheel.
+
+The deployment target for each Qt version can be found by grep'ing `QMAKE_MACOSX_DEPLOYMENT_TARGET` in `qtbase`, which is set in `mkspecs/macx-clang/qmake.conf` for the 5.6, 5.9, 5.10 branches:
+- [Qt 5.6](http://code.qt.io/cgit/qt/qtbase.git/tree/mkspecs/macx-clang/qmake.conf?h=5.6)
+- [Qt 5.9](http://code.qt.io/cgit/qt/qtbase.git/tree/mkspecs/macx-clang/qmake.conf?h=5.9)
+- [Qt 5.10](http://code.qt.io/cgit/qt/qtbase.git/tree/mkspecs/macx-clang/qmake.conf?h=5.10)
+- [Qt 5.11](http://code.qt.io/cgit/qt/qtbase.git/tree/mkspecs/macx-clang/qmake.conf?h=5.11)
+
+It can also be found in the Coin CI macOS platform configs marked with "Packaging" tag:
 - [Qt 5.6](http://code.qt.io/cgit/qt/qt5.git/tree/coin/platform_configs/default.txt?h=5.6)
 - [Qt 5.9](http://code.qt.io/cgit/qt/qt5.git/tree/coin/platform_configs/default.txt?h=5.9)
+- [Qt 5.10](http://code.qt.io/cgit/qt/qt5.git/tree/coin/platform_configs/default.txt?h=5.10)
 
 Go to https://testresults.qt.io/coin/ and find a Qt5 build with a matching config. Look at the build log of `qtbase`, search for `-mmacosx-version` and get the value of this option. This marks the lowest target deployment version.
 
-The value can be set as environment variable `MACOSX_DEPLOYMENT_TARGET` during build time.
-
-Note: a simpler way of finding the deployment target is to grep for `QMAKE_MACOSX_DEPLOYMENT_TARGET` in `qtbase`, which is set in `mkspecs/macx-clang/qmake.conf` in 5.6,5.9,5.10 at least.
 
 ### Build platform versions
 
 The official advice is use latest macOS, latest xcode, latest sdk. Pragmatic advice is whatever runs on your machine and succeeds at building.
-
-
-
-### Tagging creates a new relese
-
-Manual tagging causes a Github release to be created through CI deploy. PySide2 wheels will be attached to the release notes as they are fully built. Tag using semver (`[v]major.minor.patch` or `YY.MM.DD`), e.g. `2018.01.01`, since PySide2 does not yet have a maintained version string.
-
-```bash
-git commit -am "Commit all changes..."
-git push  # triggers a build
-git tag 2018.01.01
-git push origin 2018.01.01  # cancels previous build, starts new build and generates release
-```
 
 
 ### A note on Upstream issues
@@ -73,8 +69,9 @@ If you have any general questions, please check out the [PySide2 Gitter communit
 
 ### Useful links
 
-- [PySide2 Getting Started Wiki](https://wiki.qt.io/PySide2_GettingStarted)
+- [PySide2 website](https://wiki.qt.io/PySide2)
 - [Coin CI pyside-setup](https://testresults.qt.io/coin/?project=pyside%2Fpyside-setup)
 - Supported platforms and configurations
   - [Qt 5.6](https://doc.qt.io/qt-5.6/supported-platforms-and-configurations.html)
   - [Qt 5.9](https://doc.qt.io/qt-5.9/supported-platforms-and-configurations.html)
+  - [Qt 5.10](https://doc.qt.io/qt-5.10/supported-platforms-and-configurations.html)
