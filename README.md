@@ -46,6 +46,7 @@ It can also be found in the Coin CI macOS platform configs marked with "Packagin
 - [Qt 5.6](http://code.qt.io/cgit/qt/qt5.git/tree/coin/platform_configs/default.txt?h=5.6)
 - [Qt 5.9](http://code.qt.io/cgit/qt/qt5.git/tree/coin/platform_configs/default.txt?h=5.9)
 - [Qt 5.10](http://code.qt.io/cgit/qt/qt5.git/tree/coin/platform_configs/default.txt?h=5.10)
+- [Qt 5.11](http://code.qt.io/cgit/qt/qt5.git/tree/coin/platform_configs/default.txt?h=5.11)
 
 Go to https://testresults.qt.io/coin/ and find a Qt5 build with a matching config. Look at the build log of `qtbase`, search for `-mmacosx-version` and get the value of this option. This marks the lowest target deployment version.
 
