@@ -15,7 +15,7 @@ matrix:
       - CI_QMAKE=${HOME}/Qt-${QT_VER}/${QT_VER}/clang_64/bin/qmake
       - QT_INSTALLER_FILE=qt-opensource-mac-x64-clang-${QT_VER}
       - QT_INSTALL_PATH=${HOME}/Qt-${QT_VER}
-      - CI_DEPLOY_TARGET=10.7
+      - CI_DEPLOY_TARGET="--osx-deployment-target=10.7"
       - CI_LIBC=--osx-use-libc++
     os: osx
     osx_image: xcode9.3
@@ -39,7 +39,7 @@ matrix:
       - CI_QMAKE=${HOME}/Qt-${QT_VER}/${QT_VER}/clang_64/bin/qmake
       - QT_INSTALLER_FILE=qt-opensource-mac-x64-clang-${QT_VER}
       - QT_INSTALL_PATH=${HOME}/Qt-${QT_VER}
-      - CI_DEPLOY_TARGET=10.7
+      - CI_DEPLOY_TARGET="--osx-deployment-target=10.7"
       - CI_LIBC=--osx-use-libc++
     os: osx
     osx_image: xcode9.3
@@ -63,7 +63,7 @@ matrix:
       - CI_QMAKE=${HOME}/Qt-${QT_VER}/${QT_VER}/clang_64/bin/qmake
       - QT_INSTALLER_FILE=qt-opensource-mac-x64-clang-${QT_VER}
       - QT_INSTALL_PATH=${HOME}/Qt-${QT_VER}
-      - CI_DEPLOY_TARGET=10.7
+      - CI_DEPLOY_TARGET="--osx-deployment-target=10.7"
       - CI_LIBC=--osx-use-libc++
     os: osx
     osx_image: xcode9.3
@@ -88,7 +88,7 @@ matrix:
       - LIBCLANG_FILE=libclang-release_50-mac-clazy.7z
       - QT_INSTALLER_FILE=qt-opensource-mac-x64-${QT_VER}
       - QT_INSTALL_PATH=${HOME}/Qt-${QT_VER}
-      - CI_DEPLOY_TARGET=10.10
+      - CI_DEPLOY_TARGET="--macos-deployment-target=10.10"
       - CI_LIBC=--macos-use-libc++
     os: osx
     osx_image: xcode9.3
@@ -113,7 +113,7 @@ matrix:
       - LIBCLANG_FILE=libclang-release_50-mac-clazy.7z
       - QT_INSTALLER_FILE=qt-opensource-mac-x64-${QT_VER}
       - QT_INSTALL_PATH=${HOME}/Qt-${QT_VER}
-      - CI_DEPLOY_TARGET=10.10
+      - CI_DEPLOY_TARGET="--macos-deployment-target=10.10"
       - CI_LIBC=--macos-use-libc++
     os: osx
     osx_image: xcode9.3
@@ -138,7 +138,7 @@ matrix:
       - LIBCLANG_FILE=libclang-release_50-mac-clazy.7z
       - QT_INSTALLER_FILE=qt-opensource-mac-x64-${QT_VER}
       - QT_INSTALL_PATH=${HOME}/Qt-${QT_VER}
-      - CI_DEPLOY_TARGET=10.10
+      - CI_DEPLOY_TARGET="--macos-deployment-target=10.10"
       - CI_LIBC=--macos-use-libc++
     os: osx
     osx_image: xcode9.3
@@ -163,7 +163,7 @@ matrix:
       - LIBCLANG_FILE=libclang-release_50-mac-clazy.7z
       - QT_INSTALLER_FILE=qt-opensource-mac-x64-${QT_VER}
       - QT_INSTALL_PATH=${HOME}/Qt-${QT_VER}
-      - CI_DEPLOY_TARGET=10.10
+      - CI_DEPLOY_TARGET="--macos-deployment-target=10.10"
       - CI_LIBC=--macos-use-libc++
     os: osx
     osx_image: xcode9.3
@@ -188,7 +188,7 @@ matrix:
       - LIBCLANG_FILE=libclang-release_50-mac-clazy.7z
       - QT_INSTALLER_FILE=qt-opensource-mac-x64-${QT_VER}
       - QT_INSTALL_PATH=${HOME}/Qt-${QT_VER}
-      - CI_DEPLOY_TARGET=10.10
+      - CI_DEPLOY_TARGET="--macos-deployment-target=10.10"
       - CI_LIBC=--macos-use-libc++
     os: osx
     osx_image: xcode9.3
@@ -213,7 +213,7 @@ matrix:
       - LIBCLANG_FILE=libclang-release_50-mac-clazy.7z
       - QT_INSTALLER_FILE=qt-opensource-mac-x64-${QT_VER}
       - QT_INSTALL_PATH=${HOME}/Qt-${QT_VER}
-      - CI_DEPLOY_TARGET=10.10
+      - CI_DEPLOY_TARGET="--macos-deployment-target=10.10"
       - CI_LIBC=--macos-use-libc++
     os: osx
     osx_image: xcode9.3
@@ -300,7 +300,7 @@ before_script:
 
 
 script:
-  - ${CI_PY} pyside-setup/setup.py bdist_wheel --ignore-git --standalone --no-examples ${CI_LIBC} --qmake=${CI_QMAKE} --cmake=${CI_CMAKE} --osx-deployment-target=${CI_DEPLOY_TARGET} --jobs=3
+  - ${CI_PY} pyside-setup/setup.py bdist_wheel --ignore-git --standalone --no-examples ${CI_LIBC} --qmake=${CI_QMAKE} --cmake=${CI_CMAKE} ${CI_DEPLOY_TARGET} --jobs=3
 
 
 # before_cache:
