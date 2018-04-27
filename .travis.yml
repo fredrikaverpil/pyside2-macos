@@ -291,7 +291,8 @@ before_script:
 
 
 script:
-  - ${CI_PY} pyside-setup/setup.py bdist_wheel --ignore-git --standalone --no-examples --osx-use-libc++ --qmake=${CI_QMAKE} --cmake=${CI_CMAKE} --osx-deployment-target=${CI_DEPLOY_TARGET} --jobs=3
+  - if [ "$PYSIDE_BRANCH" == "5.6" ]; then ${CI_PY} pyside-setup/setup.py bdist_wheel --ignore-git --standalone --no-examples --qmake=${CI_QMAKE} --cmake=${CI_CMAKE} --osx-deployment-target=${CI_DEPLOY_TARGET} --jobs=3 --osx-use-libc++ ; fi
+  - if [ "$PYSIDE_BRANCH" != "5.6" ]; then ${CI_PY} pyside-setup/setup.py bdist_wheel --ignore-git --standalone --no-examples --qmake=${CI_QMAKE} --cmake=${CI_CMAKE} --osx-deployment-target=${CI_DEPLOY_TARGET} --jobs=3 --macos-use-libc++ ; fi
 
 
 # before_cache:
