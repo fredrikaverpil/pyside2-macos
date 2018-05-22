@@ -15,8 +15,7 @@ matrix:
       - CI_QMAKE=${HOME}/Qt-${QT_VER}/${QT_VER}/clang_64/bin/qmake
       - QT_INSTALLER_FILE=qt-opensource-mac-x64-clang-${QT_VER}
       - QT_INSTALL_PATH=${HOME}/Qt-${QT_VER}
-      - CI_DEPLOY_TARGET="--osx-deployment-target=10.7"
-      - CI_LIBC=--osx-use-libc++
+      - CI_DEPLOY_TARGET=10.7
     os: osx
     osx_image: xcode9.3
     language: generic
@@ -39,8 +38,7 @@ matrix:
       - CI_QMAKE=${HOME}/Qt-${QT_VER}/${QT_VER}/clang_64/bin/qmake
       - QT_INSTALLER_FILE=qt-opensource-mac-x64-clang-${QT_VER}
       - QT_INSTALL_PATH=${HOME}/Qt-${QT_VER}
-      - CI_DEPLOY_TARGET="--osx-deployment-target=10.7"
-      - CI_LIBC=--osx-use-libc++
+      - CI_DEPLOY_TARGET=10.7
     os: osx
     osx_image: xcode9.3
     language: generic
@@ -54,7 +52,7 @@ matrix:
       - PYSIDE_BRANCH=5.6
       - QT_VER_SHORT=5.6
       - QT_VER=5.6.3
-      - PY_VER=3.6.5
+      - PY_VER=3.6.4
       - PY_URL_PART=https://www.python.org/ftp/python/${PY_VER}
       - PY_FILENAME=python-${PY_VER}-macosx10.6.pkg
       - CI_PY=/usr/local/bin/python3
@@ -63,8 +61,7 @@ matrix:
       - CI_QMAKE=${HOME}/Qt-${QT_VER}/${QT_VER}/clang_64/bin/qmake
       - QT_INSTALLER_FILE=qt-opensource-mac-x64-clang-${QT_VER}
       - QT_INSTALL_PATH=${HOME}/Qt-${QT_VER}
-      - CI_DEPLOY_TARGET="--osx-deployment-target=10.7"
-      - CI_LIBC=--osx-use-libc++
+      - CI_DEPLOY_TARGET=10.7
     os: osx
     osx_image: xcode9.3
     language: generic
@@ -88,8 +85,7 @@ matrix:
       - LIBCLANG_FILE=libclang-release_50-mac-clazy.7z
       - QT_INSTALLER_FILE=qt-opensource-mac-x64-${QT_VER}
       - QT_INSTALL_PATH=${HOME}/Qt-${QT_VER}
-      - CI_DEPLOY_TARGET="--macos-deployment-target=10.10"
-      - CI_LIBC=--macos-use-libc++
+      - CI_DEPLOY_TARGET=10.10
     os: osx
     osx_image: xcode9.3
     language: generic
@@ -113,8 +109,7 @@ matrix:
       - LIBCLANG_FILE=libclang-release_50-mac-clazy.7z
       - QT_INSTALLER_FILE=qt-opensource-mac-x64-${QT_VER}
       - QT_INSTALL_PATH=${HOME}/Qt-${QT_VER}
-      - CI_DEPLOY_TARGET="--macos-deployment-target=10.10"
-      - CI_LIBC=--macos-use-libc++
+      - CI_DEPLOY_TARGET=10.10
     os: osx
     osx_image: xcode9.3
     language: generic
@@ -128,7 +123,7 @@ matrix:
       - PYSIDE_BRANCH=5.9
       - QT_VER_SHORT=5.9
       - QT_VER=5.9.4
-      - PY_VER=3.6.5
+      - PY_VER=3.6.4
       - PY_URL_PART=https://www.python.org/ftp/python/${PY_VER}
       - PY_FILENAME=python-${PY_VER}-macosx10.6.pkg
       - CI_PY=/usr/local/bin/python3
@@ -138,8 +133,7 @@ matrix:
       - LIBCLANG_FILE=libclang-release_50-mac-clazy.7z
       - QT_INSTALLER_FILE=qt-opensource-mac-x64-${QT_VER}
       - QT_INSTALL_PATH=${HOME}/Qt-${QT_VER}
-      - CI_DEPLOY_TARGET="--macos-deployment-target=10.10"
-      - CI_LIBC=--macos-use-libc++
+      - CI_DEPLOY_TARGET=10.10
     os: osx
     osx_image: xcode9.3
     language: generic
@@ -148,80 +142,77 @@ matrix:
     #   directories:
     #     - ${QT_INSTALL_PATH}
 
-  - env:
-      - NAME="Python 2.7, Qt 5.10"
-      - PYSIDE_BRANCH=5.9
-      - QT_VER_SHORT=5.10
-      - QT_VER=5.10.1
-      - PY_VER=2.7.14
-      - PY_URL_PART=https://www.python.org/ftp/python/${PY_VER}
-      - PY_FILENAME=python-${PY_VER}-macosx10.6.pkg
-      - CI_PY=/usr/local/bin/python2
-      - CI_PIP=/usr/local/bin/pip2
-      - CI_CMAKE=/usr/local/bin/cmake
-      - CI_QMAKE=${HOME}/Qt-${QT_VER}/${QT_VER}/clang_64/bin/qmake
-      - LIBCLANG_FILE=libclang-release_50-mac-clazy.7z
-      - QT_INSTALLER_FILE=qt-opensource-mac-x64-${QT_VER}
-      - QT_INSTALL_PATH=${HOME}/Qt-${QT_VER}
-      - CI_DEPLOY_TARGET="--macos-deployment-target=10.10"
-      - CI_LIBC=--macos-use-libc++
-    os: osx
-    osx_image: xcode9.3
-    language: generic
-    # cache:
-    #   timeout: 2000
-    #   directories:
-    #     - ${QT_INSTALL_PATH}
+  # - env:
+  #     - NAME="Python 2.7, Qt 5.10"
+  #     - PYSIDE_BRANCH=5.9
+  #     - QT_VER_SHORT=5.10
+  #     - QT_VER=5.10.1
+  #     - PY_VER=2.7.14
+  #     - PY_URL_PART=https://www.python.org/ftp/python/${PY_VER}
+  #     - PY_FILENAME=python-${PY_VER}-macosx10.6.pkg
+  #     - CI_PY=/usr/local/bin/python2
+  #     - CI_PIP=/usr/local/bin/pip2
+  #     - CI_CMAKE=/usr/local/bin/cmake
+  #     - CI_QMAKE=${HOME}/Qt-${QT_VER}/${QT_VER}/clang_64/bin/qmake
+  #     - LIBCLANG_FILE=libclang-release_50-mac-clazy.7z
+  #     - QT_INSTALLER_FILE=qt-opensource-mac-x64-${QT_VER}
+  #     - QT_INSTALL_PATH=${HOME}/Qt-${QT_VER}
+  #     - CI_DEPLOY_TARGET=10.10
+  #   os: osx
+  #   osx_image: xcode9.3
+  #   language: generic
+  #   # cache:
+  #   #   timeout: 2000
+  #   #   directories:
+  #   #     - ${QT_INSTALL_PATH}
 
-  - env:
-      - NAME="Python 3.5, Qt 5.10"
-      - PYSIDE_BRANCH=5.9
-      - QT_VER_SHORT=5.10
-      - QT_VER=5.10.1
-      - PY_VER=3.5.4
-      - PY_URL_PART=https://www.python.org/ftp/python/${PY_VER}
-      - PY_FILENAME=python-${PY_VER}-macosx10.6.pkg
-      - CI_PY=/usr/local/bin/python3
-      - CI_PIP=/usr/local/bin/pip3
-      - CI_CMAKE=/usr/local/bin/cmake
-      - CI_QMAKE=${HOME}/Qt-${QT_VER}/${QT_VER}/clang_64/bin/qmake
-      - LIBCLANG_FILE=libclang-release_50-mac-clazy.7z
-      - QT_INSTALLER_FILE=qt-opensource-mac-x64-${QT_VER}
-      - QT_INSTALL_PATH=${HOME}/Qt-${QT_VER}
-      - CI_DEPLOY_TARGET="--macos-deployment-target=10.10"
-      - CI_LIBC=--macos-use-libc++
-    os: osx
-    osx_image: xcode9.3
-    language: generic
-    # cache:
-    #   timeout: 2000
-    #   directories:
-    #     - ${QT_INSTALL_PATH}
+  # - env:
+  #     - NAME="Python 3.5, Qt 5.10"
+  #     - PYSIDE_BRANCH=5.9
+  #     - QT_VER_SHORT=5.10
+  #     - QT_VER=5.10.1
+  #     - PY_VER=3.5.4
+  #     - PY_URL_PART=https://www.python.org/ftp/python/${PY_VER}
+  #     - PY_FILENAME=python-${PY_VER}-macosx10.6.pkg
+  #     - CI_PY=/usr/local/bin/python3
+  #     - CI_PIP=/usr/local/bin/pip3
+  #     - CI_CMAKE=/usr/local/bin/cmake
+  #     - CI_QMAKE=${HOME}/Qt-${QT_VER}/${QT_VER}/clang_64/bin/qmake
+  #     - LIBCLANG_FILE=libclang-release_50-mac-clazy.7z
+  #     - QT_INSTALLER_FILE=qt-opensource-mac-x64-${QT_VER}
+  #     - QT_INSTALL_PATH=${HOME}/Qt-${QT_VER}
+  #     - CI_DEPLOY_TARGET=10.10
+  #   os: osx
+  #   osx_image: xcode9.3
+  #   language: generic
+  #   # cache:
+  #   #   timeout: 2000
+  #   #   directories:
+  #   #     - ${QT_INSTALL_PATH}
 
-  - env:
-      - NAME="Python 3.6, Qt 5.10"
-      - PYSIDE_BRANCH=5.9
-      - QT_VER_SHORT=5.10
-      - QT_VER=5.10.1
-      - PY_VER=3.6.5
-      - PY_URL_PART=https://www.python.org/ftp/python/${PY_VER}
-      - PY_FILENAME=python-${PY_VER}-macosx10.6.pkg
-      - CI_PY=/usr/local/bin/python3
-      - CI_PIP=/usr/local/bin/pip3
-      - CI_CMAKE=/usr/local/bin/cmake
-      - CI_QMAKE=${HOME}/Qt-${QT_VER}/${QT_VER}/clang_64/bin/qmake
-      - LIBCLANG_FILE=libclang-release_50-mac-clazy.7z
-      - QT_INSTALLER_FILE=qt-opensource-mac-x64-${QT_VER}
-      - QT_INSTALL_PATH=${HOME}/Qt-${QT_VER}
-      - CI_DEPLOY_TARGET="--macos-deployment-target=10.10"
-      - CI_LIBC=--macos-use-libc++
-    os: osx
-    osx_image: xcode9.3
-    language: generic
-    # cache:
-    #   timeout: 2000
-    #   directories:
-    #     - ${QT_INSTALL_PATH}
+  # - env:
+  #     - NAME="Python 3.6, Qt 5.10"
+  #     - PYSIDE_BRANCH=5.9
+  #     - QT_VER_SHORT=5.10
+  #     - QT_VER=5.10.1
+  #     - PY_VER=3.6.4
+  #     - PY_URL_PART=https://www.python.org/ftp/python/${PY_VER}
+  #     - PY_FILENAME=python-${PY_VER}-macosx10.6.pkg
+  #     - CI_PY=/usr/local/bin/python3
+  #     - CI_PIP=/usr/local/bin/pip3
+  #     - CI_CMAKE=/usr/local/bin/cmake
+  #     - CI_QMAKE=${HOME}/Qt-${QT_VER}/${QT_VER}/clang_64/bin/qmake
+  #     - LIBCLANG_FILE=libclang-release_50-mac-clazy.7z
+  #     - QT_INSTALLER_FILE=qt-opensource-mac-x64-${QT_VER}
+  #     - QT_INSTALL_PATH=${HOME}/Qt-${QT_VER}
+  #     - CI_DEPLOY_TARGET=10.10
+  #   os: osx
+  #   osx_image: xcode9.3
+  #   language: generic
+  #   # cache:
+  #   #   timeout: 2000
+  #   #   directories:
+  #   #     - ${QT_INSTALL_PATH}
 
 
 before_install:
@@ -237,15 +228,6 @@ install:
   # Fix issue on xcode6.4: https://github.com/Homebrew/brew/issues/3299#issuecomment-335837083
   # - brew update
 
-  # CMake 3.x already provided by Travis CI
-  # - brew install cmake
-
-  # lxml
-  - HOMEBREW_NO_AUTO_UPDATE=1 brew install libxslt libxml2
-
-  # 7zip
-  - HOMEBREW_NO_AUTO_UPDATE=1 brew install tree p7zip
-
   # Python
   - curl -L -O ${PY_URL_PART}/${PY_FILENAME}
   - sudo installer -pkg ${PY_FILENAME} -target /
@@ -254,9 +236,14 @@ install:
   # pip
   - ${CI_PY} --version
   - ${CI_PIP} --version
-  - curl https://bootstrap.pypa.io/get-pip.py | ${CI_PY}
-  - ${CI_PIP} --version
+  - ${CI_PIP} install --trusted-host pypi.python.org --upgrade pip
   - ${CI_PIP} install --trusted-host pypi.python.org --upgrade setuptools wheel
+
+  # lxml
+  - brew install libxslt libxml2
+
+  # 7zip
+  - brew install tree p7zip
 
   # Qt
   - if [ ! -d "${QT_INSTALL_PATH}" ] ; then curl -L -O https://download.qt.io/archive/qt/${QT_VER_SHORT}/${QT_VER}/${QT_INSTALLER_FILE}.dmg ; fi
@@ -278,7 +265,10 @@ install:
   - if [ "$PYSIDE_BRANCH" != "5.6" ]; then export CLANG_INSTALL_DIR=$(pwd)/libclang ; fi
   - if [ "$PYSIDE_BRANCH" != "5.6" ]; then rm -rf ${LIBCLANG_FILE} ; fi
 
-  # Clone repo
+
+  # CMake 3.x already provided by Travis CI
+  # - brew install cmake
+
   - git clone --recursive --branch ${PYSIDE_BRANCH} https://code.qt.io/pyside/pyside-setup.git pyside-setup
 
 
@@ -300,7 +290,7 @@ before_script:
 
 
 script:
-  - ${CI_PY} pyside-setup/setup.py bdist_wheel --ignore-git --standalone --no-examples ${CI_LIBC} --qmake=${CI_QMAKE} --cmake=${CI_CMAKE} ${CI_DEPLOY_TARGET} --jobs=3
+  - ${CI_PY} pyside-setup/setup.py bdist_wheel --ignore-git --standalone --no-examples --osx-use-libc++ --qmake=${CI_QMAKE} --cmake=${CI_CMAKE} --osx-deployment-target=${CI_DEPLOY_TARGET} --jobs=3
 
 
 # before_cache:
