@@ -242,7 +242,8 @@ install:
   - ${CI_PIP} install --upgrade setuptools wheel
 
   # lxml
-  - brew install libxslt libxml2
+  - brew install libxslt
+  - brew install libxml2
 
   # 7zip
   - brew install tree p7zip
