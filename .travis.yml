@@ -241,9 +241,9 @@ install:
   - ${CI_PIP} install --upgrade pip
   - ${CI_PIP} install --upgrade setuptools wheel
 
-  # lxml
-  - brew install libxslt
-  - brew install libxml2
+  # lxml (avoid exit code 1 if package is up to date)
+  - brew outdated | grep -q libxslt && brew upgrade libxslt
+  - brew outdated | grep -q libxml2 && brew upgrade libxml2
 
   # 7zip
   - brew install tree p7zip
