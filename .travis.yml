@@ -241,12 +241,15 @@ install:
   - ${CI_PIP} install --upgrade pip
   - ${CI_PIP} install --upgrade setuptools wheel
 
+  # Show outdated packages
+  - brew outdated
+
   # lxml
-  - brew install libxslt || true
-  - brew install libxml2 || true
+  - HOMEBREW_NO_AUTO_UPDATE=1 brew install libxslt
+  - HOMEBREW_NO_AUTO_UPDATE=1 brew install libxml2
 
   # 7zip
-  - brew install tree p7zip
+  - HOMEBREW_NO_AUTO_UPDATE=1 brew install tree p7zip
 
   # Qt
   - if [ ! -d "${QT_INSTALL_PATH}" ] ; then curl -L -O https://download.qt.io/archive/qt/${QT_VER_SHORT}/${QT_VER}/${QT_INSTALLER_FILE}.dmg ; fi
